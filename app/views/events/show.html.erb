@@ -1,0 +1,125 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @event.name %>
+</p>
+
+<p>
+  <b>Event description:</b>
+  <%= @event.event_description %>
+</p>
+
+<p>
+  <b>Event starting on:</b>
+  <%= @event.event_starting_on %>
+</p>
+
+<p>
+  <b>Event ending on:</b>
+  <%= @event.event_ending_on %>
+</p>
+
+<p>
+  <b>No of guests:</b>
+  <%= @event.no_of_guests %>
+</p>
+
+<p>
+  <b>No of guests attending:</b>
+  <%= @event.no_of_guests_attending %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @event.user_id %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%= @event.address %>
+</p>
+
+<p>
+  <b>Gmaps:</b>
+  <%= @event.gmaps %>
+</p>
+
+<p>
+  <b>Event category:</b>
+  <%= @event.event_category_id %>
+</p>
+
+<p>
+  <b>Ev pot:</b>
+  <%= @event.ev_pot %>
+</p>
+
+<p>
+  <b>Ev swap:</b>
+  <%= @event.ev_swap %>
+</p>
+
+<p>
+  <b>Ev collaborative:</b>
+  <%= @event.ev_collaborative %>
+</p>
+
+<p>
+  <b>Ev party:</b>
+  <%= @event.ev_party %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%= @event.location_id %>
+</p>
+
+<p>
+  <b>Event type:</b>
+  <%= @event.event_type %>
+</p>
+
+<p>
+  <b>Latitude:</b>
+  <%= @event.latitude %>
+</p>
+
+<p>
+  <b>Longitude:</b>
+  <%= @event.longitude %>
+</p>
+
+<p>
+  <b>Slug:</b>
+  <%= @event.slug %>
+</p>
+
+<p>
+  <b>Street:</b>
+  <%= @event.street %>
+</p>
+
+<p>
+  <b>Zip:</b>
+  <%= @event.zip %>
+</p>
+
+<p>
+  <b>State:</b>
+  <%= @event.state %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%= @event.city %>
+</p>
+
+<p>
+  <b>Country:</b>
+  <%= @event.country %>
+</p>
+
+
+<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Back', events_path %>

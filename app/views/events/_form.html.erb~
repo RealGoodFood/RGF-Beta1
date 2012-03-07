@@ -1,0 +1,223 @@
+
+
+<script type="text/javascript">
+function hide_additional_information_fields() {
+	$('#event_ev_pot').parent().slideUp();
+	$('#event_ev_swap').parent().slideUp();
+	$('#event_ev_party').parent().slideUp();
+	$('#event_ev_collaborative').parent().slideUp();
+}
+
+function reset_additional_field_values() 
+{
+	// Set 'Specify location' to 'N/A'
+	$('#event_ev_pot').val('N/A');
+	$('#event_ev_swap').val('N/A');
+	$('#event_ev_party').val('N/A');
+	$('#event_ev_collaborative').val('N/A');
+}
+
+function initialize_additional_fields()
+{
+	var event = $('#event_event_type').val();
+	if(event == 'Potluck') {
+		$('#event_ev_pot').parent().slideDown();
+	} 
+	if(event == 'Swap') {
+		$('#event_ev_swap').parent().slideDown();
+	} 
+
+	if(event == 'Dinner Party') {
+		$('#event_ev_party').parent().slideDown();
+	} 
+	if(event == 'Collaborative Cooking Event') {
+		$('#event_ev_collaborative').parent().slideDown();
+	} 
+
+	
+}
+
+ $(function() {
+ 	
+ 	hide_additional_information_fields();
+ 	reset_additional_field_values();
+ 	
+ 	$('#event_event_type').change(function() {
+ 		hide_additional_information_fields();
+ 		reset_additional_field_values();
+ 		var event = $(this).val();
+ 		if(event == 'Potluck') {
+ 			$('#event_ev_pot').val('');
+ 			$('#event_ev_pot').parent().slideDown();
+ 			$('#event_ev_pot').focus();
+ 			$('#event_location_id').val('');
+ 			$('#event_location_id').parent().slideDown();
+ 			$('#event_location_id').focus();
+ 			
+ 		} if(event == 'Swap') {
+ 			$('#event_ev_swap').val('');
+ 			$('#event_ev_swap').parent().slideDown();
+ 			$('#event_ev_swap').focus();
+
+ 		} 
+
+                  if(event == 'Dinner Party') {
+ 			$('#event_ev_party').val('');
+ 			$('#event_ev_party').parent().slideDown();
+ 			$('#event_ev_party').focus();
+
+ 		} 
+
+                  if(event == 'Collaborative Cooking Event') {
+ 			$('#event_ev_collaborative').val('');
+ 			$('#event_ev_collaborative').parent().slideDown();
+ 			$('#event_ev_collaborative').focus();
+
+ 		} 
+
+ 	});
+ 	
+ 	$('#event_event_type').change(function()
+ {
+ 	});
+ });
+</script>
+
+
+
+<div id="center-inner-container">
+
+
+<%= nested_form_for(@event, :html => {:multipart => :true }) do |f| %>
+  <% if @event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+      <ul>
+      <% @event.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>	
+
+
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+
+  <div class="field">
+    <b><%= f.label :title %></b><br />
+    <%= f.text_field :name, 
+                     :placeholder=>"food listing name",
+                     :class=>"inner-inputbox-large",
+                     :id=>"textfield" %><br />
+  </div><br /><br />
+
+
+  <div class="field">
+    <%= f.label :Description %>
+    <%= f.text_area :event_description,
+                    :size => "55x10",
+                    :class=>"inner-inputarea-large",
+                    :id=>"textarea" %>
+  </div><br />
+
+  <div class="field">
+    <%= f.label :starting_on %><br />
+    <%= f.date_select :event_starting_on %>
+  </div><br />
+
+<!--  <div class="field">
+    <%= f.label :ending_on %><br />
+    <%= f.date_select :event_ending_on %>
+  </div><br /> -->
+
+  <div class="field">
+    <%= f.label :UploadAnImage %><br />
+    <%= f.file_field :photo %>
+  </div><br />
+
+  <div class="field">
+    <%= f.label :Address %><br />
+    <%= f.text_field :address,
+                     :class=>"inner-inputbox-large",
+                     :id=>"textfield" %><br />
+  </div><br />
+
+  <div class="field">
+    <%= f.label :street %><br />
+    <%= f.text_field :street, :class=>"inner-inputbox-large",
+                     :id=>"textfield" %><br />
+  </div><br />
+
+  <div class="field">
+    <%= f.label :city %><br />
+    <%= f.text_field :city,:class=>"inner-inputbox-large",
+                     :id=>"textfield" %><br />
+  </div><br />
+
+  <div class="field">
+    <%= f.label :zip %><br />
+    <%= f.text_field :zip,:class=>"inner-inputbox-large",
+                     :id=>"textfield" %><br />
+  </div><br />
+
+  <div class="field">
+    <%= f.label :state %><br />
+    <%= f.text_field :state,:class=>"inner-inputbox-large",
+                     :id=>"textfield" %><br />
+  </div><br />
+
+  <div class="styled-select">
+    <%= f.label :'Event Type' %><br>
+    <%= select(:event, :event_type,
+                 ['','Swap','Dinner Party','Collaborative Cooking Event','Potluck']) %>
+  </div><br />
+
+<div class="field">  
+<table>
+  <%= f.fields_for :potlucks do |pot| %>
+  <tr>
+      <td>Food Name :<%= pot.text_field :food_name,
+                                        :class=>"inner-inputbox-large",
+                                        :id=>"textfield" %></td><br>
+      <td>Food For People :<%= pot.text_field :food_for_people,
+                                              :size =>10,
+                                              :class=>"inner-inputbox-large",
+                                              :id=>"textfield" %></td><br>
+      <td>Food Type :<%= pot.text_field :food_type,
+                                        :class=>"inner-inputbox-large",
+                                        :id=>"textfield" %></td><br>
+  </tr>
+       <% end %>
+</table>
+  </div>
+
+  <div class="field">
+    Total number of spaces available  :<br><%= f.text_field :no_of_guests,
+                                                            :class=>"inner-inputbox-large",
+                                                            :id=>"textfield" %>
+</div>
+
+  <div class="field">
+   <br><p> <%= f.check_box :ev_swap %> Listings enabled but not required</p>
+        <%= f.check_box :ev_swap %> Listings enabled and required</p>
+        <%= f.check_box :ev_swap %> No Listings enabled</p>
+  </div>
+
+  <div class="field">
+   Party  :<br> <%= f.text_field :ev_party %>
+  </div>
+
+  <div class="field">
+   Collaborative  :<br> <%= f.text_field :ev_collaborative %>
+  </div>
+
+
+<br/><br />
+
+<%= f.submit %>
+
+</div>
+<br />
+<% end %>
+

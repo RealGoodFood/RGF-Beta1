@@ -1,0 +1,70 @@
+
+<style>
+
+.wrap {
+    background: #aaa;
+    margin: 0 auto;
+    display: inline;
+    overflow: hidden;
+    padding-top:4px;
+}
+
+.sidebar {
+     margin: 0 0 12px;
+     padding-top: 6px; 
+     margin-left: 150px;
+     width: 450px;
+     float: center;
+     font-size :15px;
+     font-family:ubuntu;
+}
+
+
+.container {
+     width:700px;
+     border: 1px solid #0088CC;
+     border-radius:8px;
+     color: #000;
+     margin: 0 0 12px;
+     padding-top: 6px; 
+     padding-left:5px;
+     padding-bottom:5px;
+     background: no-repeat scroll left top #c0c0c0; 
+     background: #fff;
+     -webkit-box-shadow: inset 1px 1px 12px 2px #fff;
+     -moz-box-shadow: inset 1px 1px 12px 2px #fff;
+      box-shadow: inset 1px 1px 12px 2px #fff;
+   }
+
+.box {
+    background: #fff;
+    border: 0px solid #0088CC;
+    border-radius:5px;
+    padding: 10px;
+    margin: 5px;
+    float: left;
+}
+
+</style>
+
+<% @listings.each do |listing| %>
+    <div class="wrap">
+    <div class="container">
+        <div class="box">
+        <% if listing.photo.exists? then %>
+	  <%= link_to image_tag(listing.photo.url(:thumb)),listing  %>
+        <% end %><br></div>
+   <div class="sidebar">
+   <b style = "font-size:20px;"><%= link_to listing.title, listing %> </b> <br><br>
+   <p style ="font-size:14px;"><%=h truncate listing.description.html_safe, :length => 200 %></p>
+      <%= link_to "continued", listing %><br>
+      <b><%= time_tag listing.start_date %></b>
+</div></div>
+<% end %>
+
+<br />
+
+<h3><%= button_to 'New Listing', new_listing_path, :method=>:get %></h3>
+
+
+

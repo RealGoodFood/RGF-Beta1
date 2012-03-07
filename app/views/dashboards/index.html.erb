@@ -1,0 +1,246 @@
+<div id="users">
+  <% @users.each do |user| %>
+<div id="user">
+      <% if user.email != current_user.email %>
+        <%=h user.profile.full_name %>
+        <%= link_to "Add Friend", friendships_path(:friend_id => user), :method => :post %>
+      <% end %>
+    </div>
+
+  <% end %>
+</div>
+
+
+
+
+
+<script type="text/javascript">
+/*Important Function to blend the tabs in and out*/
+function blendoff(idname) {document.getElementById(idname).style.display = 'none';}
+function blendon(idname) {document.getElementById(idname).style.display = 'block';}
+</script>
+
+
+<script type="text/javascript">
+/*Function for our Tabmenu with 4 Tabs*/
+function swichtabs(wert) {
+	if (wert=='1'){
+		document.getElementById('tablink1').className='tab1 tabactive';
+		document.getElementById('tablink2').className='tab2';
+	    document.getElementById('tablink3').className='tab3';
+		document.getElementById('tablink4').className='tab4';
+	}else if (wert=='2'){
+		document.getElementById('tablink1').className='tab1';
+		document.getElementById('tablink2').className='tab2 tabactive';
+	    document.getElementById('tablink3').className='tab3';
+		document.getElementById('tablink4').className='tab4';
+	}else if (wert=='3'){
+		document.getElementById('tablink1').className='tab1';
+		document.getElementById('tablink2').className='tab2';
+	    document.getElementById('tablink3').className='tab3 tabactive';
+		document.getElementById('tablink4').className='tab4';
+	}	else if (wert=='4'){
+		document.getElementById('tablink1').className='tab1';
+		document.getElementById('tablink2').className='tab2';
+		document.getElementById('tablink3').className='tab3';
+	    document.getElementById('tablink4').className='tab4 tabactive';
+	}
+}
+</script>
+
+    <div id="center-right-inner-container">
+      <h1>My Food Community</h1>
+      
+<div class="menu">
+
+<ul>
+
+<li><a href="#" onclick="blendon('tabcontent1'); blendoff('tabcontent2'); blendoff('tabcontent3');blendoff('tabcontent4');swichtabs('1');"  onclick="return false;" title="" class="tabactive" id="tablink1"><span>Listings</span></a>
+</li>
+
+<li><a href="#" onclick="blendon('tabcontent2'); blendoff('tabcontent1'); blendoff('tabcontent3');blendoff('tabcontent4');swichtabs('2');"  onclick="return false;" title="" id="tablink2"><span>Events </span></a></li>
+
+<li>
+  <a href="#" onclick="blendon('tabcontent3'); blendoff('tabcontent1'); blendoff('tabcontent2'); blendoff('tabcontent4');swichtabs('3');" onclick="return false;"  title=""id="tablink3">
+  <span>Groups </span>
+  </a>
+</li>
+
+<li>
+  <a href="#" onclick="blendon('tabcontent4'); blendoff('tabcontent1'); blendoff('tabcontent2');blendoff('tabcontent3');swichtabs('4');"  onclick="return false;" title=""id="tablink4" >
+  <span>See all Activity</span>
+  </a>
+</li>
+
+<li><a href="#" onclick="blendon('tabcontent5'); blendoff('tabcontent1'); blendoff('tabcontent2');blendoff('tabcontent3');swichtabs('5');"  onclick="return false;" title=""id="tablink5" ><span>Latest Request</span> </a>
+</li>
+
+</ul>
+</div>
+<!--End of the Tabmenu -->
+
+<!--Start Tabcontent 1 -->
+<div style="display:block;" id="tabcontent1" class="tab-inner-contain">
+
+  <div class="p10">
+   <a href="javascript:faq.sweepToggle('contract')" class="expandlink">Contract All</a> |
+   <a href="javascript:faq.sweepToggle('expand')" class="expandlink">Expand All</a>
+  </div>
+
+ <div class="eg-bar">
+   <table width="99%" border="0" align="right" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="4%" align="left" valign="middle">
+       <span id="faq1-title" class="iconspan1">
+          <img src="/images/minus.gif" />
+       </span>
+      </td>
+      <td width="95%" align="left" valign="middle">
+        <a style ="color:white">Add Filter by my Food Preferences</a>
+      </td>
+    </tr>
+   </table>
+  </div>
+
+ <div style="display: block;" id="faq1" class="icongroup1">
+  <table width="30%" border="0" cellspacing="0" cellpadding="0">
+   <tr>
+    <td align="left"><input name="Vegetarian " type="checkbox" value="Vegetarian " /></td>
+    <td align="left" style ="color:white">Vegetarian </td>
+    <td align="left" ><input name="Gluten free" type="checkbox" value="Gluten free" id="Gluten free" /></td>
+    <td align="left" style ="color:white">Gluten free</td>
+   </tr>
+  </table>
+ </div>
+
+  <div class="eg-bar" "="">
+  <table width="99%" border="0" align="right" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="4%" align="left" valign="middle">
+      <span id="faq2-title" class="iconspan1">
+        <img src="/images/plus.gif" />
+      </span>
+    </td>
+    <td width="95%" align="left" valign="middle" style ="color:white">Add Filter by my Groups</td>
+  </tr>
+</table>
+</div>
+
+<div style="display: none;" id="faq2" class="icongroup1">
+   <a style ="color:white">Add Filter by my Groups Lorem ipsum </a>
+</div>
+          
+<div class="eg-bar" "="">
+ <table width="99%" border="0" align="right" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="4%" align="left" valign="middle">
+      <span id="faq3-title" class="iconspan1">
+        <img src="/images/plus.gif" />
+      </span>
+    </td>
+    <td width="95%" align="left" valign="middle" style ="color:white"> Add Filter by my My Locations</td>
+  </tr>
+</table>
+</div>
+
+<div style="display: none;" id="faq3" class="icongroup1">
+     <a style ="color:white"> Add Filter by my My Locations Lorem ipsum</a>
+</div>
+
+<script type="text/javascript">
+
+var faq=new switchicon("icongroup1", "div") //Limit scanning of switch contents to just "div" elements
+faq.setHeader('<img src="/images/minus.gif" />', '<img src="/images/plus.gif" />') //set icon HTML
+faq.collapsePrevious(true) //Allow only 1 content open at any time
+faq.setPersist(false) //No persistence enabled
+faq.defaultExpanded(0) //Set 1st content to be expanded by default
+faq.init()
+
+</script>
+</div>
+<!--End Tabcontent 1-->
+
+<!--Start Tabcontent 2-->
+<div style="display:none;" id="tabcontent2" class="tab-inner-contain">
+<div class="tab-inner-contain-top-padding">Events</div>
+</div>
+<!--End Tabcontent 2 -->
+
+<!--Start Tabcontent 3-->
+<div style="display:none;" id="tabcontent3" class="tab-inner-contain">
+<div class="tab-inner-contain-top-padding">Groups</div>
+</div>
+<!--End Tabcontent 3-->
+
+<!--Start Tabcontent 4-->
+<div style="display:none;" id="tabcontent4" class="tab-inner-contain">
+<div class="tab-inner-contain-top-padding">See all Activity</div>
+</div>
+<!--End Tabcontent 4-->
+
+<!--Start Tabcontent 5-->
+<div style="display:none;" id="tabcontent5" class="tab-inner-contain">
+<div class="tab-inner-contain-top-padding">Latest Requests</div>
+	<ul>
+        Latest meal Requests(<%= MemberAttendingEventRegister.find_all_by_owner_id_and_state(current_user, 'request_sent').count %>)
+        </b></a><div class="arrow"></div>
+<div>
+<p>
+<table  class="dataGrid">
+
+  <tr class="green-title-bg">
+    <td align="left">Request on Meal</td>
+    <td align="left">Perform action</td>
+  </tr>
+
+<% @requested_event.each do |attendence| %>
+
+   <tr class="dark-gray-bg">
+      <td align ="left">
+      <h4><%= link_to attendence.user.profile.full_name, attendence.user.profile(attendence) %></h4>
+              wants to join your meal <br />
+              " <%=link_to attendence.event.name, attendence  %>"</td>
+      <td align ="left"><%= link_to 'Accept or Reject ', attendence %></td>
+  </tr>
+
+<% end %>
+
+</table><br />
+
+</p></div>
+</li>
+
+</div>
+<!--End Tabcontent 5-->
+<br />
+
+      <div>
+        <h3 class="left">My Listings</h3>
+      </div>
+
+      <table width="100%" border="0" cellspacing="1" cellpadding="0">
+        <tr class="green-title-bg">
+          <td align="left">Title </td>
+          <td align="left"> Ready on date</td>
+          <td align="left">Suggested Storage</td>
+          <td align="left">Diet category </td>
+          <td align="left">Quantity </td>
+        </tr>
+          <% @event.each do |e| %>
+	<tr class="dark-gray-bg">
+          <td align="left"><%= e.name %></td>
+	  <td align="left"><%= e.event_starting_on %></td>
+          <td align="left"><%= e.event_ending_on %></td>
+	  <td align="left"><%= e.event_ending_on %></td>
+ 	  <td align="left"><%= e.no_of_guests %></td>
+        </tr>
+          <% end %>
+      </table>
+      <br />
+
+      <div class="pagginginarea">
+        <a><%= will_paginate @event, :class => 'pagination ajax' %></a>
+      </div>
+  </div>
+
+

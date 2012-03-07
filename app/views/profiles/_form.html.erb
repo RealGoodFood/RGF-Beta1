@@ -1,0 +1,66 @@
+<div style = "margin-left:10px;padding-left:2px">
+<%= form_for @profile  , :html => { :multipart => true } do |f| %>
+  <% if @profile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+
+      <ul>
+      <% @profile.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<style>
+.btn{
+background-color: #006DCC;
+    background-image: -moz-linear-gradient(center top , #0088CC, #0044CC);
+    background-repeat: repeat-x;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+}
+.btn-primary, .btn-primary:hover, .btn-warning, .btn-warning:hover, .btn-danger, .btn-danger:hover, .btn-success, .btn-success:hover, .btn-info, .btn-info:hover {
+    color: #FFFFFF;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+.btn {
+    -moz-border-bottom-colors: none;
+    -moz-border-image: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+</style>
+
+
+<%= f.hidden_field :user_id , :value=>current_user.id %>
+
+<table id="hor-minimalist-b" >
+<div class="field">
+<tr>
+    <td><strong><%= f.label :'Full Name' %></strong><br />
+    <%= f.text_field :full_name, :placeholder=>"Enter your First_name" %></td>
+   </tr>
+</div><br>
+
+
+<div class="field">
+<tr>
+    <td><strong><%= f.label :Date_OF_Birth %></strong><br />
+    <%= f.date_select :date_of_birth, :start_year => 1950, 
+                      :order => [:day, :month, :year],
+                      :prompt => { :day => 'Select day',
+                                   :month => 'Select month',
+                                   :year => 'Select year' } %>
+
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+
+
+
+<% end %>
+</table>
+</div>

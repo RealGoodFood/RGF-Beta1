@@ -1,0 +1,65 @@
+<head>
+<style>
+
+.wrap {
+    background: #aaa;
+    margin: 0 auto;
+    display: inline;
+    overflow: hidden;
+    padding-top:4px;
+}
+
+.sidebar {
+     margin: 0 0 12px;
+     padding-top: 6px; 
+     margin-left: 150px;
+     width: 450px;
+     float: center;
+     font-size :15px;
+     font-family:ubuntu;
+}
+
+
+.container {
+     width:700px;
+     border-radius:8px;
+     margin: 0 0 12px;
+     padding-top: 6px; 
+     padding-left:5px;
+     padding-bottom:5px;
+     background: no-repeat scroll left top #c0c0c0; 
+     background: #fff;
+     -webkit-box-shadow: inset 1px 1px 12px 2px #c0c0c0;
+     -moz-box-shadow: inset 1px 1px 12px 2px #c0c0c0;
+      box-shadow: inset 1px 1px 12px 2px #c0c0c0;
+   }
+
+.box {
+    background: #eee;
+    border: 1px solid #ccc;
+    border-radius:5px;
+    padding: 10px;
+    margin: 5px;
+    float: left;
+}
+
+</style>
+</head>
+
+<% @groups.each do |group| %>
+    <div class="wrap">
+    <div class="container">
+        <div class="box">
+        <% if group.photo.exists? then %>
+	  <%= link_to image_tag(group.photo.url(:thumb)),group  %>
+        <% end %><br></div>
+   <div class="sidebar">
+    <b style = "font-size:20px;"><%= group.name %></b> <br><br>
+   <%= truncate group.description.html_safe, :length => 100 %>
+      <%= link_to "continued", group %><br>
+</div></div>
+<% end %>
+
+<br />
+
+<%= button_to 'New Group', new_group_path, :method =>:get %>

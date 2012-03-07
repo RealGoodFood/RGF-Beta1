@@ -1,0 +1,132 @@
+<%= javascript_include_tag "/javascripts/ckeditor/ckeditor.js" %>
+
+
+<%= form_for(@listing, :html => {:multipart => true}) do |f| %>
+  <% if @listing.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@listing.errors.count, "error") %> prohibited this listing from being saved:</h2>
+
+      <ul>
+      <% @listing.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <b><%= f.label :title %></b><br />
+       <%= f.text_field :title %><br />
+  </div><br /><br />
+
+  <div class="field">
+    <b><%= f.label :description %></b><br />
+    <%= f.cktext_area :description, :toolbar=>'Full', :width=>'800px', :height=>'200px' %>
+  </div><br />
+
+  <div class="field">
+  <div class="styled-select">
+    <b><%= f.label :Select_food_category %></b><br />
+       <%= f.collection_select :food_category_id, FoodCategory.find(:all), :id, :name %>
+  </div></div><br />
+
+  <div class="field">
+    <b><%= f.label :Listings_address %></b><br />
+    <%= f.text_field :location_address,
+                     :placeholder=>"Enter listings address",
+                     :class=>"inner-inputbox-large",
+                     :id=>"textfield" %><br /></td>
+
+  </div><br />
+
+  <div class="field">
+    <b><%= f.label :start_date %></b><br />
+       <%= f.date_select :start_date %>
+  </div><br />
+
+
+  <div class="field">
+    <b><%= f.label :Image_Upload %></b><br />
+          <%= f.file_field :photo,
+                           :class=>"boton",
+                           :id=>"select" %>
+  </div>
+<br />
+
+  <div class="field">
+    <%= f.hidden_field :user_id, :value=>current_user.id %>
+  </div>
+
+
+  <div class="field">
+    <b><%= f.label :Food_Type %></b><br />
+        <% @values.each do |value| -%>
+            <table width="60%" 
+                   border="0"
+                   cellspacing="0"
+                   cellpadding="0"
+                   class="inner-inputbox-midum"
+                   id="select">
+            <tr>
+
+              <td width="14%" height="25" align="left">
+
+                  <%= check_box_tag( 'listing[tag_list][]',
+                      value.name,
+                      :onClick => "$$('#my_form input.check').each(function(box)
+                                     {box.checked=($('check_all').checked)?true:false});")%>
+                 <%= value.name %>
+              </td>
+
+            </tr>
+          </table>
+        <% end %>
+ </div>
+<br />
+
+  <div class="field">
+            <table width="60%" 
+                   border="0"
+                   cellspacing="0"
+                   cellpadding="0"
+                   class="inner-inputbox-midum"
+                   id="select">
+            <tr>
+
+   <td width="14%" height="25" align="left">
+      <b>
+       <%= f.label :Suggested_Storage %>
+      </b><br />
+
+    <p><%= f.radio_button  :eat_by_date_id, 1 %>
+           <%= f.label :eat_by_date_id, "Shelf" %></p>
+
+    <p><%= f.radio_button  :eat_by_date_id, 2 %>
+           <%= f.label :status_2, "Freezer" %></p>
+  
+    <p><%= f.radio_button  :eat_by_date_id, 3 %>
+           <%= f.label :status_3, "Fridge" %></p>
+    <br />
+  </td>
+</tr>
+  </div><br />
+
+</table>
+<br><br>
+  <div class="field">
+    <b><%= f.label :end_date %></b><br />
+       <%= f.date_select :end_date %>
+  </div>
+<br />
+
+
+<br />
+  <div class="actions">
+    <a>
+     <span><%= f.submit :class=>'boton' %></span>
+    </a>
+   </div>
+  </div>
+
+<% end %>
+

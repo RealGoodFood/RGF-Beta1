@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<% if @group.photo.exists? then %>
+	<%= image_tag @group.photo.url(:small) %>
+<% end %>
+
+<p>
+  <b>Name:</b>
+  <%= @group.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @group.description.html_safe %>
+</p>
+
+
+<%= link_to 'Edit', edit_group_path(@group) %> |
+<%= link_to 'Back', groups_path %>

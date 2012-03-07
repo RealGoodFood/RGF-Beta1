@@ -1,0 +1,148 @@
+<div style ="background:#ffffff;border:3px solid #ffffff;border-radius:8px;padding:20px">
+<style>
+.floatright { float: right; padding-bottom:2px;height:auto;border:2px solid #333333;border-radius:8px; }
+</style>
+
+<div class ="floatright">
+<% if @listing.photo.exists? then %>
+	<%= image_tag(@listing.photo.url) %>
+<% end %>
+</div>
+<br>
+<b>
+ <% if @listing.user_id == current_user.id %>
+  <%= link_to 'Edit', edit_listing_path(@listing) %> |
+  <%= link_to 'Remove', @listing, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to 'View All Listings', listings_path %>
+<% else %>
+  <%= link_to 'View All Listings', listings_path %>
+<% end %>
+</b>
+
+<br><br>
+  <h1><%= @listing.title %></h1>
+<br>
+
+<p>
+<b>Food category:</b>
+  <%= @listing.food_category.name %>
+</p>
+<br>
+
+<p>
+<b>Description:</b>
+  <%= @listing.description.html_safe %>
+</p>
+<br>
+
+<p>
+<b>Start date:</b>
+  <%= time_tag @listing.start_date %>
+</p>
+<br>
+
+<p>
+<b>End date:</b>
+<%= time_tag @listing.end_date %>
+</p>
+<br>
+
+<table>
+<b>Food type:</b><br />
+<% @listing.tags.each do |f| %>
+<tr>
+<td><%= f.name %></td>
+</tr>
+<% end %>
+</table>
+<br>
+
+<p>
+<b>Availablity Duration:</b>&nbsp;&nbsp;
+<% if ( @listing.end_date - Date.today() ).to_i < 0 %>
+<p style = color:darkorange;font-size:20px> <b>"Sorry !..this Listing Has Expired "</b> </p>
+<% else %>
+<%= distance_of_time_in_words(Time.now, @listing.end_date +  50.minute) %></td>
+<% end %>
+</p>
+<br>
+
+<p>
+<b>Suggested Storage:</b>
+<%= @listing.eat_by_date.name %>
+</p>
+<hr>
+
+<p style = "border:3px solid #333333;width:400px;padding:0px;border-radius:8px;">
+<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=14&markers=#{@listing.latitude}%2C#{@listing.longitude}" %>
+</p>
+<br />
+
+
+<% unless @listing.comments.empty? %>
+  <b> 
+	<%= pluralize(@listing.comments.size, 'comment') %>
+  </b>
+  <br>
+<style>
+
+#comment
+{
+width: 90%;
+margin: 10px auto;
+background-color: #fff;
+color: #333;
+border: 1px solid gray;
+line-height: 130%;
+padding : 4px;
+}
+
+#avatar
+{
+float: left;
+width: 160px;
+}
+
+#content
+{
+margin-left: 200px;
+border-left: 1px solid gray;
+padding: 1em;
+background:#FAF5F5;
+max-width: 36em;
+color:#000000;
+}
+
+</style>
+
+ <% for comment in @listing.comments %>
+<% if user_signed_in? %>
+<div id ="comment">
+
+<div id ="avatar" style ="padding-left:25px;padding-top:20px;">
+     <%= gravatar_image_tag(current_user.email.downcase,
+                                            :alt => current_user.email,
+                                            :class => 'gravatar',
+                                            :gravatar => {:size => 150}) %>
+
+      <strong style  = color:blue>
+         <%= h comment.user.email  %>
+     </strong>
+      <em>on <%= comment.created_at.strftime('%b %d, %Y at %H:%M') %></em>
+<% if comment.user_id == current_user.id %>
+ <h3><%= link_to 'Edit', edit_comment_path(comment) %></h3>
+<% end %>
+
+</div>
+
+<div id ="content">
+    <%=  comment.body %><hr />
+</div>
+</div>
+  <% end %>
+
+<% end %>
+<%= render :partial => 'comments/form' %>
+
+</div>
+<% end %>

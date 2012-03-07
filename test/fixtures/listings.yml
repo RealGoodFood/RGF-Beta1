@@ -1,0 +1,37 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  food_category_id: 1
+  description: MyText
+  location_address: MyString
+  latitude: 1.5
+  longitude: 1.5
+  start_date: 2012-02-27
+  end_date: 2012-02-27
+  user_id: 1
+  eat_by_date_id: 1
+  slug: MyString
+  street: MyString
+  pincode: MyString
+  city: MyString
+  state: MyString
+  country: MyString
+
+two:
+  title: MyString
+  food_category_id: 1
+  description: MyText
+  location_address: MyString
+  latitude: 1.5
+  longitude: 1.5
+  start_date: 2012-02-27
+  end_date: 2012-02-27
+  user_id: 1
+  eat_by_date_id: 1
+  slug: MyString
+  street: MyString
+  pincode: MyString
+  city: MyString
+  state: MyString
+  country: MyString

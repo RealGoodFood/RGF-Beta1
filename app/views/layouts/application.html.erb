@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>RealGoodFood</title>
+    <%= csrf_meta_tags %>
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+<link href='http://fonts.googleapis.com/css?family=Fresca' rel='stylesheet' type='text/css'>
+<%= stylesheet_link_tag "MyFontsWebfontsKit.css" %>
+    <%= stylesheet_link_tag    "bootstrap.min.css","bootstrap.css","MyFontsWebfontsKit.css" %>
+    <%= javascript_include_tag "jquery-1.3.2.min.js","jquery-ui-1.7.1.custom.min.js" %>
+
+    <style>
+      body {
+        padding-top: 60px;background: white url("../images/bg.png") repeat; 
+        /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+    </style>
+
+<script type="text/javascript">
+  // When the document is ready set up our sortable with it's inherant function(s)
+  $(document).ready(function() {
+    $("#test-list").sortable({
+      handle : '.handle',
+      update : function () {
+		  var order = $('#test-list').sortable('serialize');
+  		$("#info").load("process-sortable.php?"+order);
+      }
+    });
+});
+</script>
+
+    <!-- Le fav and touch icons -->
+    <link href="images/favicon.ico" rel="shortcut icon">
+    <link href="images/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="images/apple-touch-icon-72x72.png" rel="apple-touch-icon" sizes="72x72">
+    <link href="images/apple-touch-icon-114x114.png" rel="apple-touch-icon" sizes="114x114">
+  </head>
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+          <div class="container-fluid">
+          <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
+            <span class="i-bar"></span>
+            <span class="i-bar"></span>
+            <span class="i-bar"></span>
+          </a>
+          <a class="brand" href="/">Home</a>
+          <div class="container-fluid nav-collapse">
+            <ul class="nav">
+                <li><%= link_to "Food", listings_path  %></li>
+                <li><%= link_to "Events", events_path  %></li>
+                <li><%= link_to "Group", groups_path  %></li>
+                <li><%= link_to "Blog", blogs_path  %></li>
+              <% if user_signed_in? %>
+
+                <li style ="color:white;margin-top:9px;margin-left:100px;"><%= h current_user.email %></li>
+                <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+
+              <% else %>
+                <li style ="margin-left:150px;"><%= link_to 'LOGIN', new_user_session_path %></li> 
+                <li><%= link_to 'REGISTER',new_user_registration_path %></li>
+            </ul>
+              <% end %>
+
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+<% if current_user %>
+    <div class="container-fluid">
+       <div class="row-fluid">
+        <div class="span3">
+          <div class="well sidebar-nav">
+            <ul class="nav nav-list">
+
+  <div id="gutter">&nbsp; </div>
+  <div id="maincontainer">
+    <div id="left-container">
+      <div class="right-box-border">
+        <div class="right-box-main">
+          <div class="user-iconbg">
+
+<% if current_user.profile.nil? %>
+         <%= image_tag("../images/user-icon.jpg") %>
+<% else %>
+      <% unless current_user.profile.photo? %>
+          <%= image_tag("../images/user-icon.jpg") %>
+      <% else %>
+         <%= image_tag current_user.profile.photo.url(:profile)  %>
+<% end %>
+<% end %>
+          </div>
+
+            <% unless current_user.profile.nil? %>
+             <li class="nav-header"><%= current_user.profile.full_name %></li>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="right-box-border">
+        <div class="right-box-main">
+          <br><br><ul id="test-list">
+            <li>
+             <img src="../images/arrow.png" width="16" height="16" class="handle" />
+               <%= link_to 'My Dashboard', dashboards_path %></a></li>
+            <% unless current_user.profile.nil? %>
+              <li><img src="../images/arrow.png" width="16" height="16" class="handle" />
+                   <%= link_to 'My Profile', profile_path(current_user.profile.slug) %></a></li>
+            <% end %>
+            <li><img src="../images/arrow.png" width="16" height="16" class="handle" />
+                   <%= link_to 'Change Password', edit_user_registration_path %></a></li>
+            <li><img src="../images/arrow.png" width="16" height="16" class="handle" />
+                   <%= link_to 'Add a Food Listing', new_listing_path %></a></li>
+            <li><img src="../images/arrow.png" width="16" height="16" class="handle" />
+                   <%= link_to 'Add an Event', new_event_path %></a></li>
+          </ul>
+        </div>
+      </div><br><br>
+      <div class="right-box-border">
+        <div class="right-box-main">
+          <div class="inner-left-right-side-title">Latest Events</div>
+           <% Event.find(:all).each do |e| %>
+          <br />
+          <%= image_tag e.photo.url(:icon)  %>
+           <div style = "margin:-35px -50px 50px 50px;padding-left:10px;text-style:bold">
+                <b><%= e.name %></b><br>
+                <%= time_tag e.event_starting_on %><br><br>
+                <%=  e.address %>
+          </div>
+          <hr />
+          <% end %><% end %></div>
+      </div>
+    </div>
+
+            </ul>
+          </div><!--/.well -->
+        </div><!--/span-->
+        <div class="span9">
+          <%= yield %>
+        </div>
+      </div><!--/row-->
+
+
+    </div> <!-- /container -->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <%= javascript_include_tag "application" %>
+
+  </body>
+</html>

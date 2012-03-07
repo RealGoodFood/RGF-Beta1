@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Blog | RS 19</title>
+<link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div id="wrap">
+<div id="topbar">
+
+
+</div>
+<div id="ribbon">
+
+<h1 id="sitename">RamblingSoul</h1>
+</div>
+<div id="header">
+<div id="topnav">
+<ul>
+<li><a href="index.html" title="Home Page">Home</a></li>
+
+<li class="current"><a href="blog.html" title="blog example">Blog Page</a></li>
+<li><a href="single.html" title="Single Page Example">Single Article</a></li>
+<li><a href="about.html" title="about page">About</a></li>
+<li><a href="contact.html" title="contact page">Contact</a></li>
+
+</ul>
+</div>
+<div id="introtext">
+
+<h2>Hello,</h2>
+<p><span>
+Fusce vulputate dapibus purus euismod hendrerit. Donec et sapien sed quam tristique aliquet. Etiam nec quam nulla. Donec sit amet dui sed lectus semper tincidunt eget et massa. Integer et orci massa.</span></p>
+
+</div>
+
+
+</div>
+<div id="content">
+<div id="left">
+<div class="container">
+<div class="post">
+<div class="postheader">
+<div class="date shadow">
+<span class="day">28</span>
+<span class="month">September</span>
+
+</div>
+<p class="postinfo">
+ <span>By <a href="#">admin</a></span>
+ <span><a href="#">15 Comments</a></span>
+ <span><a href="#">Web Design</a></span>
+ <span><strong>Tags</strong></span>
+ <span><a href="#">Lorem</a>, <a href="#">Ipsum</a>, <a href="#">Sapien</a>, <a href="#">Eros</a></span>
+ </p>
+
+</div>
+<div class="postcontent"><h2><a href="#">Lorem Ipsum Dolar Sit Amet</a></h2>
+
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet arcu vitae ipsum cursus cursus a eleifend urna. Praesent eu bibendum arcu. Nunc volutpat, dui non tristique ornare, sapien eros mollis ligula, ut ultricies lectus ligula in leo. Nam ut ante lacus. In non mi quis tellus laoreet egestas. Sed lorem massa, tempor non bibendum eu, vehicula id lectus. Sed pellentesque, libero at sodales dictum, tellus quam volutpat dolor, eu accumsan arcu massa vel sapien. </p>
+  <p>Vestibulum feugiat ante non nunc pellentesque hendrerit. Mauris tempor blandit nunc in hendrerit. Proin tincidunt turpis id nisl mattis ac ullamcorper lorem pharetra. Ut faucibus quam nec metus ullamcorper commodo. Cras sodales nibh a lorem iaculis a sodales velit iaculis. Mauris facilisis fringilla lobortis. Ut rutrum, elit in gravida posuere, ipsum diam imperdiet quam, consequat tincidunt felis ipsum ac nibh. Etiam ut purus ante. Donec non iaculis urna.  <span class="readmore"><a href="#">Read More</a></span></p>  
+  
+  </div>
+</div>
+<div class="post">
+<div class="postheader">
+<div class="date shadow">
+<span class="day">28</span>
+<span class="month">September</span>
+
+</div>
+<p class="postinfo">
+ <span>By <a href="#">admin</a></span>
+ <span><a href="#">15 Comments</a></span>
+ </p>
+
+</div>
+<div class="postcontent"><h2><a href="#">Lorem Ipsum Dolar Sit Amet</a></h2>
+
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet arcu vitae ipsum cursus cursus a eleifend urna. Praesent eu bibendum arcu. Nunc volutpat, dui non tristique ornare, sapien eros mollis ligula, ut ultricies lectus ligula in leo. Nam ut ante lacus. In non mi quis tellus laoreet egestas. Sed lorem massa, tempor non bibendum eu, vehicula id lectus. Sed pellentesque, libero at sodales dictum, tellus quam volutpat dolor, eu accumsan arcu massa vel sapien. </p>
+  <p>Vestibulum feugiat ante non nunc pellentesque hendrerit. Mauris tempor blandit nunc in hendrerit. Proin tincidunt turpis id nisl mattis ac ullamcorper lorem pharetra. Ut faucibus quam nec metus ullamcorper commodo. Cras sodales nibh a lorem iaculis a sodales velit iaculis. Mauris facilisis fringilla lobortis. Ut rutrum, elit in gravida posuere, ipsum diam imperdiet quam, consequat tincidunt felis ipsum ac nibh. Etiam ut purus ante. Donec non iaculis urna.  <span class="readmore"><a href="#">Read More</a></span></p>  
+  
+  </div>
+</div>
+<div class="post">
+<div class="postheader">
+<div class="date shadow">
+<span class="day">28</span>
+<span class="month">September</span>
+
+</div>
+<p class="postinfo">
+ <span>By <a href="#">admin</a></span>
+ <span><a href="#">15 Comments</a></span>
+ </p>
+
+</div>
+<div class="postcontent"><h2><a href="#">Lorem Ipsum Dolar Sit Amet</a></h2>
+
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet arcu vitae ipsum cursus cursus a eleifend urna. Praesent eu bibendum arcu. Nunc volutpat, dui non tristique ornare, sapien eros mollis ligula, ut ultricies lectus ligula in leo. Nam ut ante lacus. In non mi quis tellus laoreet egestas. Sed lorem massa, tempor non bibendum eu, vehicula id lectus. Sed pellentesque, libero at sodales dictum, tellus quam volutpat dolor, eu accumsan arcu massa vel sapien. </p>
+  <p>Vestibulum feugiat ante non nunc pellentesque hendrerit. Mauris tempor blandit nunc in hendrerit. Proin tincidunt turpis id nisl mattis ac ullamcorper lorem pharetra. Ut faucibus quam nec metus ullamcorper commodo. Cras sodales nibh a lorem iaculis a sodales velit iaculis. Mauris facilisis fringilla lobortis. Ut rutrum, elit in gravida posuere, ipsum diam imperdiet quam, consequat tincidunt felis ipsum ac nibh. Etiam ut purus ante. Donec non iaculis urna.  <span class="readmore"><a href="#">Read More</a></span></p>  
+  
+  </div>
+</div>
+<div class="post">
+<div class="postheader">
+<div class="date shadow">
+<span class="day">28</span>
+<span class="month">September</span>
+
+</div>
+<p class="postinfo">
+ <span>By <a href="#">admin</a></span>
+ <span><a href="#">15 Comments</a></span>
+ </p>
+
+</div>
+<div class="postcontent"><h2><a href="#">Lorem Ipsum Dolar Sit Amet</a></h2>
+
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet arcu vitae ipsum cursus cursus a eleifend urna. Praesent eu bibendum arcu. Nunc volutpat, dui non tristique ornare, sapien eros mollis ligula, ut ultricies lectus ligula in leo. Nam ut ante lacus. In non mi quis tellus laoreet egestas. Sed lorem massa, tempor non bibendum eu, vehicula id lectus. Sed pellentesque, libero at sodales dictum, tellus quam volutpat dolor, eu accumsan arcu massa vel sapien. </p>
+  <p>Vestibulum feugiat ante non nunc pellentesque hendrerit. Mauris tempor blandit nunc in hendrerit. Proin tincidunt turpis id nisl mattis ac ullamcorper lorem pharetra. Ut faucibus quam nec metus ullamcorper commodo. Cras sodales nibh a lorem iaculis a sodales velit iaculis. Mauris facilisis fringilla lobortis. Ut rutrum, elit in gravida posuere, ipsum diam imperdiet quam, consequat tincidunt felis ipsum ac nibh. Etiam ut purus ante. Donec non iaculis urna.  <span class="readmore"><a href="#">Read More</a></span></p>  
+  
+  </div>
+</div>
+<div class="pagination">
+
+<span class="leftalign"><a href="#">Previous</a></span>
+<span class="rightalign"><a href="#">Next</a></span>
+<div class="clear"></div>
+</div>
+</div>
+</div>
+<div id="sidebar">
+<div class="container">
+
+<h2>Categories</h2>
+<div class="categories">
+<ul class="shadow">
+<li><a href="#">Web Design</a></li>
+<li><a href="#">CSS &amp; XHTML</a></li>
+<li><a href="#">Computer Science</a></li>
+<li><a href="#">General</a></li>
+<li><a href="#">Tutorials</a></li>
+
+
+</ul>
+</div>
+
+<h2>Latest Posts</h2>
+<div class="latestposts">
+<ul class="shadow">
+<li><a href="#">Vestibulum feugiat ante non nunc pellentesque hendrerit</a></li>
+<li><a href="#">Ut faucibus quam nec metus </a></li>
+<li><a href="#">consequat tincidunt felis ipsum ac nibh</a></li>
+<li><a href="#"> Proin tincidunt turpis id nisl mattis</a></li>
+<li><a href="#">Lorem ipsum dolor sit amet</a></li>
+
+
+</ul>
+</div>
+
+
+<h2>Blogroll</h2>
+<div class="categories">
+<ul class="shadow">
+<li><a href="#">Web Design</a></li>
+<li><a href="#">CSS &amp; XHTML</a></li>
+<li><a href="#">Computer Science</a></li>
+<li><a href="#">General</a></li>
+<li><a href="#">Tutorials</a></li>
+
+
+</ul>
+</div>
+
+
+
+</div>
+</div>
+
+<div class="clear"></div>
+
+</div>
+
+<div id="footer">
+2009 - 2010 &copy; All Rights Reserved
+<p>
+<a href="#">Put</a> | <a href="#">Some</a> | <a href="#">Links</a> | <a href="#">Here</a></p>
+<p id="credits">A
+<!-- Removing this link back to Ramblingsoul.com will be violation of the Creative Commons Attribution 3.0 Unported License, under which this template is released for download -->
+<a href="http://ramblingsoul.com" title="Download High Quality CSS Layouts">CSS Layout</a> by RamblingSoul.com
+<!-- Copyright - Ramblingsoul.com -->
+</p>
+</div></div>
+</body>
+</html>

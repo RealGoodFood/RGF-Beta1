@@ -1,0 +1,53 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: 
+  event_description: MyText
+  event_starting_on: 2012-03-02
+  event_ending_on: 2012-03-02
+  no_of_guests: 1
+  no_of_guests_attending: 1
+  user_id: 1
+  address: MyString
+  gmaps: false
+  event_category_id: 1
+  ev_pot: MyString
+  ev_swap: MyString
+  ev_collaborative: MyString
+  ev_party: MyString
+  location_id: 1
+  event_type: MyString
+  latitude: 1.5
+  longitude: 1.5
+  slug: MyString
+  street: MyString
+  zip: MyString
+  state: MyString
+  city: MyString
+  country: MyString
+
+two:
+  name: 
+  event_description: MyText
+  event_starting_on: 2012-03-02
+  event_ending_on: 2012-03-02
+  no_of_guests: 1
+  no_of_guests_attending: 1
+  user_id: 1
+  address: MyString
+  gmaps: false
+  event_category_id: 1
+  ev_pot: MyString
+  ev_swap: MyString
+  ev_collaborative: MyString
+  ev_party: MyString
+  location_id: 1
+  event_type: MyString
+  latitude: 1.5
+  longitude: 1.5
+  slug: MyString
+  street: MyString
+  zip: MyString
+  state: MyString
+  city: MyString
+  country: MyString

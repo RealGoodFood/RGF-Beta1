@@ -1,0 +1,125 @@
+<h1>Editing profile</h1>
+
+<div style = "margin-left:10px;padding-left:2px">
+<%= form_for @profile  , :html => { :multipart => true } do |f| %>
+  <% if @profile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+
+      <ul>
+      <% @profile.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<style>
+.btn{
+background-color: #006DCC;
+    background-image: -moz-linear-gradient(center top , #0088CC, #0044CC);
+    background-repeat: repeat-x;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+}
+.btn-primary, .btn-primary:hover, .btn-warning, .btn-warning:hover, .btn-danger, .btn-danger:hover, .btn-success, .btn-success:hover, .btn-info, .btn-info:hover {
+    color: #FFFFFF;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+.btn {
+    -moz-border-bottom-colors: none;
+    -moz-border-image: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+</style>
+
+
+
+
+<table id="hor-minimalist-b" >
+<div class="field">
+<tr>
+    <td><strong><%= f.label :'Full Name' %></strong><br />
+    <%= f.text_field :full_name, :placeholder=>"Enter your First_name" %></td>
+   </tr>
+</div><br>
+
+<div class="field">
+<tr>
+    <td><strong><%= f.label :Contact_Number %></strong><br />
+    <%= f.text_field :contact_number, :placeholder =>"Mobile Number" %></td></tr>
+  </div>
+
+<div class="field">
+<tr>
+    <td><strong><%= f.label :Date_OF_Birth %></strong><br />
+    <%= f.date_select :date_of_birth, :start_year => 1950, 
+                      :order => [:day, :month, :year],
+                      :prompt => { :day => 'Select day',
+                                   :month => 'Select month',
+                                   :year => 'Select year' } %>
+
+  </div>
+
+<div class="field">
+<tr><td><br>
+      <strong><%= f.label :'Food_Preference:' %></strong><br /><br />
+           <% for category in Value.find(:all) %>
+           <p><%= check_box_tag( 'profile[value_ids][]',  category.id,
+         :onClick => "$$('#my_form input.check').each(function(box){box.checked=($('check_all').checked)?true:false});")%>
+           <%= category.name %></p>
+         <% end %>  </div>
+</td></tr>
+</div>
+
+<div class="field">
+<tr>
+    <td><strong><%= f.label :Facebook_profile_link %></strong><br />
+    <%= f.text_field :faceboo_profile_link, :placeholder =>"Facebook Profile Id" %></td></tr>
+  </div>
+
+<div class="field">
+<tr>
+    <td><strong><%= f.label :Twitter_profile_link %></strong><br />
+    <%= f.text_field :twitter_profile_link, :placeholder =>"Twitter Profile Id" %></td></tr>
+  </div>
+
+
+    <%= f.hidden_field :user_id, :value => current_user.id %></td></tr>
+
+
+<div class="field">
+<tr>
+    <td><strong><%= f.label :Linked_in_Profile_Link %></strong><br />
+    <%= f.text_field :linked_in_profile_link, :placeholder =>"LinkedIn Profile Id" %></td></tr>
+  </div>
+
+<div class="field">
+<tr>
+    <td><strong><%= f.label :Google_plus_profile_path %></strong><br />
+    <%= f.text_field :google_plus_profile_link, :placeholder =>"GooglePlus Profile Id" %></td></tr>
+  </div>
+
+
+<tr>
+<div class ="field">
+   <td><b><%= f.label :'Cooking interests' %></b><br /> 
+   <%= f.text_area :about_me, :size=>'75x6',  :class => "mceEditor" %></td></tr>
+</div>
+
+<tr>
+<div class ="field">
+   <td><b><%= f.label :'Upload Profile Image' %></b><br /> 
+          <%= f.file_field :photo %>
+</div>
+<br><br>
+  <div class="actions">
+   <table><tr><td><input type="submit" value="Create Profile" name="commit" class="btn btn-primary"><br><br>
+   <%= link_to image_tag("../images/back.png", :size =>'50x50'),profiles_path %>Back</td></tr></table>
+  </div>
+
+<% end %>
+</table>
+</div>
+<%= link_to 'Show', @profile %> |
+<%= link_to 'Back', profiles_path %>

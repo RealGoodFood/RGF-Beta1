@@ -1,0 +1,35 @@
+<%= javascript_include_tag "/javascripts/ckeditor/ckeditor.js" %>
+
+<%= form_for(@comment) do |f| %>
+  <% if @comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+      <ul>
+      <% @comment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<table id="hor-minimalist-b" summary="Employee Pay Sheet" >
+
+ <%= f.hidden_field :listing_id %>
+
+<tr>
+  <div class="field">
+    <td style =color:green;text-decoration:underline><b><%= f.label :'Add_Your_Comment:' %></b><br />
+    <%= f.cktext_area :body, :toolbar=>'Full', :width=>'600px', :height=>'200px' %></td>
+
+  </div>
+</tr>
+
+<tr>
+  <div class="field">
+    <td><%= f.submit %></td>
+  </div>
+</tr>
+
+<% end %>
+</table>
