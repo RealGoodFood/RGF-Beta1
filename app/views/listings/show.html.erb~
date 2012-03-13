@@ -1,6 +1,6 @@
 <div style ="background:#ffffff;border:3px solid #ffffff;border-radius:8px;padding:20px">
 <style>
-.floatright { float: right; padding-bottom:-2px;height:auto;border:2px solid #333333;border-radius:8px; }
+.floatright { float: right; padding-bottom:2px;height:auto;border:2px solid #333333;border-radius:8px; }
 </style>
 
 <div class ="floatright">
@@ -115,31 +115,30 @@ color:#000000;
 
 </style>
 
- <% for comment in @listing.comments %>
-<% if user_signed_in? %>
+<% for comment in @listing.comments %>
+ <% if user_signed_in? %>
+
 <div id ="comment">
 
 <div id ="avatar" style ="padding-left:25px;padding-top:20px;">
-     <%= gravatar_image_tag(current_user.email.downcase,
-                                            :alt => current_user.email,
-                                            :class => 'gravatar',
-                                            :gravatar => {:size => 150}) %>
-
+      <%= image_tag(current_user.profile.photo(:small), :size =>"150x150") %>
       <strong style  = color:blue>
          <%= h comment.user.email  %>
      </strong>
+
       <em>on <%= comment.created_at.strftime('%b %d, %Y at %H:%M') %></em>
-<% if comment.user_id == current_user.id %>
- <h3><%= link_to 'Edit', edit_comment_path(comment) %></h3>
-<% end %>
 
 </div>
 
 <div id ="content">
-    <%=  comment.body %><hr />
-</div>
+    <%=  comment.body.html_safe %><hr />
+<% if comment.user_id == current_user.id %>
+ <b><%= link_to 'Edit Comment', edit_comment_path(comment) %></b>
+<% end %>
+
 </div>
   <% end %>
+</div>
 
 <% end %>
 <%= render :partial => 'comments/form' %>

@@ -61,11 +61,11 @@
                 <li><%= link_to "Blog", blogs_path  %></li>
               <% if user_signed_in? %>
 
-                <li style ="color:white;margin-top:9px;margin-left:100px;"><%= h current_user.email %></li>
+                <li style ="color:white;margin-top:9px;margin-left:430px;"><%= h current_user.email %></li>
                 <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
 
               <% else %>
-                <li style ="margin-left:150px;"><%= link_to 'LOGIN', new_user_session_path %></li> 
+                <li style ="margin-left:430px;"><%= link_to 'LOGIN', new_user_session_path %></li> 
                 <li><%= link_to 'REGISTER',new_user_registration_path %></li>
             </ul>
               <% end %>
@@ -108,19 +108,18 @@
       <div class="right-box-border">
         <div class="right-box-main">
           <br><br><ul id="test-list">
-            <li>
-             <img src="../images/arrow.png" width="16" height="16" class="handle" />
-               <%= link_to 'My Dashboard', dashboards_path %></a></li>
+            <li style ="display:block">
+               <%= link_to 'My Dashboard', dashboards_path %></li>
             <% unless current_user.profile.nil? %>
-              <li><img src="../images/arrow.png" width="16" height="16" class="handle" />
-                   <%= link_to 'My Profile', profile_path(current_user.profile.slug) %></a></li>
+              <li style ="display:block">
+                   <%= link_to 'My Profile', profile_path(current_user.profile.slug) %></li>
             <% end %>
-            <li><img src="../images/arrow.png" width="16" height="16" class="handle" />
-                   <%= link_to 'Change Password', edit_user_registration_path %></a></li>
-            <li><img src="../images/arrow.png" width="16" height="16" class="handle" />
-                   <%= link_to 'Add a Food Listing', new_listing_path %></a></li>
-            <li><img src="../images/arrow.png" width="16" height="16" class="handle" />
-                   <%= link_to 'Add an Event', new_event_path %></a></li>
+            <li style ="display:block">
+                   <%= link_to 'Change Password', edit_user_registration_path %></li>
+            <li style ="display:block">
+                   <%= link_to 'Add a Food Listing', new_listing_path %></li>
+            <li style ="display:block">
+                   <%= link_to 'Add an Event', new_event_path %></li>
           </ul>
         </div>
       </div><br><br>

@@ -59,152 +59,155 @@
     </code>
   </div>
 		<img src="images/rgf1.png" />
-	</section>
-	
-	<section id="content">
-				<ul class="column">
-                                  <h2 class="header-alt">Events</h2>
+</section>
 
-				    <!--eqblock-->
-				    <li>
-				        <section class="block">
-									<a href="#"><img src="images/1-thumb.jpg" alt=""  /></a> 
-										<h2><a href="#">Coffee 101</a></h2> 
-										<p>Proin metus odio, ultricies eu pharetra dictum, laoreet id odio. Curabitur in odio </p> 
-									<a href="#" class="button yellow">Read More</a>
-				        </section>
-				    </li>
+<section id="content">
+<ul class="column">
 
-				    <!--eqblock-->
-				    <li>
-				        <section class="block">
-									<a href="#"><img src="images/2-thumb.jpg" alt=""  /></a> 
-										<h2><a href="#">All About Beans</a></h2> 
-										<p>Morbi congue auctor interdum. Proin metus odio, ultricies eu pharetra dictum, laoreet id odio. Curabitur in odio augue. Phasellus sit amet metus justo. </p> 
-									<a href="#" class="button yellow">Read More</a>
+<h2 class="header-alt">Events</h2>
+<!--eqblock-->
+   <li>
+      <section class="block">
+	<a href="#"><img src="images/1-thumb.jpg" alt=""  /></a> 
+        <h2><a href="#">Coffee 101</a></h2> 
+      <p>Proin metus odio, ultricies eu pharetra dictum, laoreet id odio. Curabitur in odio </p> 
+        <a href="#" class="button yellow">Read More</a>
+      </section>
+   </li>
+    <!--eqblock-->
 
-				        </section>
-				    </li>
+   <li>
+      <section class="block">
+       <a href="#"><img src="images/2-thumb.jpg" alt=""  /></a> 
+       <h2><a href="#">All About Beans</a></h2> 
+      <p>Morbi congue auctor interdum. Proin metus odio, ultricies eu pharetra dictum, laoreet id odio. Curabitur in odio augue. Phasellus sit amet metus justo. </p> 
+       <a href="#" class="button yellow">Read More</a>
+      </section>
+    </li>
+  <!--eqblock-->
 
-				    <!--eqblock-->
-				    <li>
-				        <section class="block">
-									<a href="#"><img src="images/3-thumb.jpg" alt=""  /></a> 
-										<h2><a href="#">Compatible Foods</a></h2> 
-										<p>Phasellus sit amet metus justo. Proin metus odio, ultricies eu pharetra dictum, laoreet id odio. Curabitur in odio augue. Morbi congue auctor. </p> 
-									<a href="#" class="button yellow">Read More</a>
+    <li>
+      <section class="block">
+       <a href="#"><img src="images/3-thumb.jpg" alt=""  /></a> 
+       <h2><a href="#">Compatible Foods</a></h2> 
+      <p>Phasellus sit amet metus justo. Proin metus odio, ultricies eu pharetra dictum, laoreet id odio. Curabitur in odio augue. Morbi congue auctor. </p> 
+       <a href="#" class="button yellow">Read More</a>
+      </section>
+    </li>
 
-				        </section>
-				    </li>
-
-				    <!--eqblock-->
-				    <li>
-				        <section class="block">
-									<a href="#"><img src="images/4-thumb.jpg" alt=""  /></a> 
-										<h2><a href="#">Coffee Sizzle</a></h2> 
-										<p>Proin metus odio, ultricies eu pharetra dictum, laoreet id odio. Morbi congue auctor interdum. Curabitur in odio augue. Phasellus sit amet metus justo. </p> 
-									<a href="#" class="button yellow">Read More</a>
-
-				        </section>
-				    </li>
+<!--eqblock-->
+    <li>
+      <section class="block">
+       <a href="#"><img src="images/4-thumb.jpg" alt=""  /></a> 
+       <h2><a href="#">Coffee Sizzle</a></h2> 
+      <p>Proin metus odio, ultricies eu pharetra dictum, laoreet id odio. Morbi congue auctor interdum. Curabitur in odio augue. Phasellus sit amet metus justo. </p> 
+       <a href="#" class="button yellow">Read More</a>
+      </section>
+    </li>
 
 </ul>
+
 <!--eqblock-->
 <ul class="column">
 <h2 class="header-alt">Listings</h2>
 <!--eqblock-->
-<li>
-<% @listing.each do |l| %>
-<section class="block">
-<a href="#"><% if l.photo.exists? then %>
-	  <%= link_to image_tag(l.photo.url(:thumb)),l  %>
-        <% end %><br></div>
-<img src="images/1-thumb.jpg" alt=""  /></a> 
-<h2><a href="#">Coffee 101</a></h2> 
-<p>Proin metus odio, ultricies eu pharetra dictum, laoreet id odio. Curabitur in odio augue. Morbi congue auctor interdum. Phasellus sit amet metus justo. </p> 
-<a href="#" class="button yellow">Read More</a>
-</section>
-</li>
-<% end %>
-  <!--eqblock-->
+<% @listing.each do |l| %>      
+  <% if l.photo.exists? then %>
+   <li>
+     <section class="block">
+       <a><%= link_to image_tag(l.photo.url(:thumb)),l  %></a>
+       <h2><%= link_to l.title, l %></h2>
+<p>Proin metus odio, ultricies eu pharetra dictum, laoreet id odio. Curabitur in odio </p> 
+        <a href="listings/<%= l.slug %>" class="button yellow">Read More</a>
+      </p>
+     </section>
+   </li>
+<br>
+  <% end %><% end %>
+</ul>
+      
+
+	<a href="#"><img src="images/1-thumb.jpg" alt=""  /></a> 
+        <h2><a href="#">Coffee 101</a></h2> 
+      <p>Proin metus odio, ultricies eu pharetra dictum, laoreet id odio. Curabitur in odio </p> 
+        <a href="#" class="button yellow">Read More</a>
+      </section>
+   </li>
+    <!--eqblock-->
+
    <li>
       <section class="block">
        <a href="#"><img src="images/2-thumb.jpg" alt=""  /></a> 
-	<h2><a href="#">All About Beans</a></h2> 
-	<p>Morbi congue auctor interdum. Proin metus odio, ultricies eu pharetra dictum, laoreet id odio. Curabitu in odio augue. Phasellus sit amet metus justo. </p> 
-	<a href="#" class="button yellow">Read More</a>
-     </section>
-   </li>
+       <h2><a href="#">All About Beans</a></h2> 
+      <p>Morbi congue auctor interdum. Proin metus odio, ultricies eu pharetra dictum, laoreet id odio. Curabitur in odio augue. Phasellus sit amet metus justo. </p> 
+       <a href="#" class="button yellow">Read More</a>
+      </section>
+    </li>
+  <!--eqblock-->
 
-				    <!--eqblock-->
-   <li>
-     <section class="block">
-      <a href="#"><img src="images/3-thumb.jpg" alt=""  /></a> 
-	<h2><a href="#">Compatible Foods</a></h2> 
-	<p>Phasellus sit amet metus justo. Proin metus odio, ultricies eu pharetra dictum, laoreet id odio. Curabitur in odio augue. Morbi congue auctor. </p> 
-	<a href="#" class="button yellow">Read More</a>
-     </section>
-   </li>
+    <li>
+      <section class="block">
+       <a href="#"><img src="images/3-thumb.jpg" alt=""  /></a> 
+       <h2><a href="#">Compatible Foods</a></h2> 
+      <p>Phasellus sit amet metus justo. Proin metus odio, ultricies eu pharetra dictum, laoreet id odio. Curabitur in odio augue. Morbi congue auctor. </p> 
+       <a href="#" class="button yellow">Read More</a>
+      </section>
+    </li>
 
-				    <!--eqblock-->
-				    <li>
-				        <section class="block">
-									<a href="#"><img src="images/4-thumb.jpg" alt=""  /></a> 
-										<h2><a href="#">Coffee Sizzle</a></h2> 
-										<p>Proin metus odio, ultricies eu pharetra dictum, laoreet id odio. Morbi congue auctor interdum. Curabitur in odio augue. Phasellus sit amet metus justo. </p> 
-									<a href="#" class="button yellow">Read More</a>
+<!--eqblock-->
+    <li>
+      <section class="block">
+       <a href="#"><img src="images/4-thumb.jpg" alt=""  /></a> 
+       <h2><a href="#">Coffee Sizzle</a></h2> 
+      <p>Proin metus odio, ultricies eu pharetra dictum, laoreet id odio. Morbi congue auctor interdum. Curabitur in odio augue. Phasellus sit amet metus justo. </p> 
+       <a href="#" class="button yellow">Read More</a>
+      </section>
+    </li>
 
-				        </section>
-				    </li>
-				    <!--eqblock-->
-				</ul>
+
+</ul>
 
 <ul class="column">
-                                  <h2 class="header-alt"> Groups</h2>
-				    <!--eqblock-->
-				    <li>
-				        <section class="block">
-									<a href="#"><img src="images/1-thumb.jpg" alt=""  /></a> 
-										<h2><a href="#">Coffee 101</a></h2> 
-										<p>Proin metus odio, ultricies eu pharetra dictum, laoreet id odio. Curabitur in odio augue. Morbi congue auctor interdum.  </p> 
-									<a href="#" class="button yellow">Read More</a>
+  <h2 class="header-alt"> Groups</h2>
+<!--eqblock-->
+   <li>
+      <section class="block">
+	<a href="#"><img src="images/1-thumb.jpg" alt=""  /></a> 
+        <h2><a href="#">Coffee 101</a></h2> 
+      <p>Proin metus odio, ultricies eu pharetra dictum, laoreet id odio. Curabitur in odio </p> 
+        <a href="#" class="button yellow">Read More</a>
+      </section>
+   </li>
+    <!--eqblock-->
 
-				        </section>
-				    </li>
+   <li>
+      <section class="block">
+       <a href="#"><img src="images/2-thumb.jpg" alt=""  /></a> 
+       <h2><a href="#">All About Beans</a></h2> 
+      <p>Morbi congue auctor interdum. Proin metus odio, ultricies eu pharetra dictum, laoreet id odio. Curabitur in odio augue. Phasellus sit amet metus justo. </p> 
+       <a href="#" class="button yellow">Read More</a>
+      </section>
+    </li>
+  <!--eqblock-->
 
-				    <!--eqblock-->
-				    <li>
-				        <section class="block">
-									<a href="#"><img src="images/2-thumb.jpg" alt=""  /></a> 
-										<h2><a href="#">All About Beans</a></h2> 
-										<p>Morbi congue auctor interdum. Proin metus odio, ultricies eu pharetra dictum, laoreet id odio. Curabitur in odio augue. Phasellus sit amet metus justo. </p> 
-									<a href="#" class="button yellow">Read More</a>
+    <li>
+      <section class="block">
+       <a href="#"><img src="images/3-thumb.jpg" alt=""  /></a> 
+       <h2><a href="#">Compatible Foods</a></h2> 
+      <p>Phasellus sit amet metus justo. Proin metus odio, ultricies eu pharetra dictum, laoreet id odio. Curabitur in odio augue. Morbi congue auctor. </p> 
+       <a href="#" class="button yellow">Read More</a>
+      </section>
+    </li>
 
-				        </section>
-				    </li>
-
-				    <!--eqblock-->
-				    <li>
-				        <section class="block">
-									<a href="#"><img src="images/3-thumb.jpg" alt=""  /></a> 
-										<h2><a href="#">Compatible Foods</a></h2> 
-										<p>Phasellus sit amet metus justo. Proin metus odio, ultricies eu pharetra dictum, laoreet id odio. Curabitur in odio augue. Morbi congue auctor. </p> 
-									<a href="#" class="button yellow">Read More</a>
-
-				        </section>
-				    </li>
-
-				    <!--eqblock-->
-				    <li>
-				        <section class="block">
-									<a href="#"><img src="images/4-thumb.jpg" alt=""  /></a> 
-										<h2><a href="#">Coffee Sizzle</a></h2> 
-										<p>Proin metus odio, ultricies eu pharetra dictum, laoreet id odio. Morbi congue auctor interdum. Curabitur in odio augue. Phasellus sit amet metus justo. </p> 
-									<a href="#" class="button yellow">Read More</a>
-
-				        </section>
-				    </li>
-
+<!--eqblock-->
+    <li>
+      <section class="block">
+       <a href="#"><img src="images/4-thumb.jpg" alt=""  /></a> 
+       <h2><a href="#">Coffee Sizzle</a></h2> 
+      <p>Proin metus odio, ultricies eu pharetra dictum, laoreet id odio. Morbi congue auctor interdum. Curabitur in odio augue. Phasellus sit amet metus justo. </p> 
+       <a href="#" class="button yellow">Read More</a>
+      </section>
+    </li>
                                     </ul>
 
 				    <!--eqblock-->

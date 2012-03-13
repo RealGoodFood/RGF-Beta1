@@ -14,7 +14,7 @@ RealGoodFood::Application.routes.draw do
   resources :comments
   resources :listings
   get 'home/index' 
-  #resources :friendships
+  resources :friendships
   get 'friend_ship' => "friendships#create", :as => "friend_ship"
 
 

@@ -55,7 +55,7 @@
         <% end %><br></div>
    <div class="sidebar">
     <b style = "font-size:20px;"><%= group.name %></b> <br><br>
-   <%= truncate group.description.html_safe, :length => 100 %>
+   <%= truncate(group.description, :length => 100).html_safe %>
       <%= link_to "continued", group %><br>
 </div></div>
 <% end %>

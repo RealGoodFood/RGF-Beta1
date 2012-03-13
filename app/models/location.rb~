@@ -11,7 +11,7 @@ class Location < ActiveRecord::Base
 
   geocoded_by :address  
   after_validation :geocode  
-  after_validation :geocode, :if => :location_address_changed?  
+  after_validation :geocode, :if => :address_changed?  
 
 
 
