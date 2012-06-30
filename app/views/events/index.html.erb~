@@ -1,30 +1,93 @@
-<h1>Listing events</h1>
+<style>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Event description</th>
-    <th>Event starting on</th>
-    <th>Event ending on</th>
-    <th>Address</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+.wrap {
+    background: #aaa;
+    margin: 0 auto;
+    display: inline;
+    overflow: hidden;
+    padding-top:4px;
+}
+
+.sidebar {
+     margin: 0 0 12px;
+     padding-top: 6px; 
+     margin-left: 150px;
+     width: 450px;
+     float: center;
+     font-size :15px;
+     font-family:ubuntu;
+}
+
+
+.container {
+     width:700px;
+     border: 1px solid #0088CC;
+     border-radius:8px;
+     color: #000;
+     margin: 0 0 12px;
+}
+
+.wrap {
+    background: #aaa;
+    margin: 0 auto;
+    display: inline;
+    overflow: hidden;
+    padding-top:4px;
+}
+
+.sidebar {
+     margin: 0 0 12px;
+     padding-top: 6px; 
+     margin-left: 150px;
+     width: 450px;
+     float: center;
+     font-size :15px;
+     font-family:ubuntu;
+}
+
+
+.container {
+     width:700px;
+     border: 1px solid #0088CC;
+     border-radius:8px;
+     color: #000;
+     margin: 0 0 12px;
+     padding-top: 6px; 
+     padding-left:5px;
+     padding-bottom:5px;
+     background: no-repeat scroll left top #c0c0c0; 
+     background: #fff;
+     -webkit-box-shadow: inset 1px 1px 12px 2px #fff;
+     -moz-box-shadow: inset 1px 1px 12px 2px #fff;
+      box-shadow: inset 1px 1px 12px 2px #fff;
+   }
+
+.box {
+    background: #fff;
+    border: 0px solid #0088CC;
+    border-radius:5px;
+    padding: 10px;
+    margin: 5px;
+    float: left;
+}
+
+</style>
 
 <% @events.each do |event| %>
-  <tr>
-    <td><%= event.name %></td>
-    <td><%= event.event_description %></td>
-    <td><%= event.event_starting_on %></td>
-    <td><%= event.event_ending_on %></td>
-    <td><%= event.address %></td>
-    <td><%= link_to 'Edit', edit_event_path(event) %></td>
-    <td><%= link_to 'Destroy', event, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
+    <div class="wrap">
+    <div class="container">
+        <div class="box">
+        <% if event.photo.exists? then %>
+	  <%= link_to image_tag(event.photo.url(:thumb)),event  %>
+        <% end %><br></div>
+   <div class="sidebar">
+   <b style = "font-size:20px;"><%= link_to event.name, event %> </b>
+        -- <%= time_tag event.event_starting_on, :class => 'btn btn-mini' %><br><br>
+   <p style ="font-size:14px;"><%=h truncate(event.event_description, :length => 200).html_safe %></p>
+      <b><%= link_to "continued", event %></b><br>
+
+</div></div>
 
 <br />
-
-<%= link_to 'New Event', new_event_path %>
+<% end %>
+<h3><%= link_to 'New Event', new_event_path, :class => 'btn btn-mini btn-danger' %></h3>

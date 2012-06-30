@@ -1,4 +1,25 @@
-<%= form_for(@profile), :html => { :multipart => true } do |f| %>
+<style>
+.btn{
+background-color: #006DCC;
+    background-image: -moz-linear-gradient(center top , #0088CC, #0044CC);
+    background-repeat: repeat-x;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+}
+.btn-primary, .btn-primary:hover, .btn-warning, .btn-warning:hover, .btn-danger, .btn-danger:hover, .btn-success, .btn-success:hover, .btn-info, .btn-info:hover {
+    color: #FFFFFF;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+.btn {
+    -moz-border-bottom-colors: none;
+    -moz-border-image: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+</style>
+
+<div style = "font-family:ubuntu;margin:0px;padding:2px">
+
+<%= form_for @profile  , :html => { :multipart => true } do |f| %>
   <% if @profile.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
@@ -11,52 +32,55 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :full_name %><br />
-    <%= f.text_field :full_name %>
-  </div>
-  <div class="field">
-    <%= f.label :contact_number %><br />
-    <%= f.text_field :contact_number %>
-  </div>
-  <div class="field">
-    <%= f.label :date_of_birth %><br />
-    <%= f.date_select :date_of_birth %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %><br />
-    <%= f.number_field :user_id %>
-  </div>
-  <div class="field">
-    <%= f.label :slug %><br />
-    <%= f.text_field :slug %>
-  </div>
-  <div class="field">
-    <%= f.label :faceboo_profile_link %><br />
-    <%= f.text_field :faceboo_profile_link %>
-  </div>
-  <div class="field">
-    <%= f.label :twitter_profile_link %><br />
-    <%= f.text_field :twitter_profile_link %>
-  </div>
-  <div class="field">
-    <%= f.label :google_plus_link %><br />
-    <%= f.text_field :google_plus_link %>
-  </div>
-  <div class="field">
-    <%= f.label :linked_in_profile_link %><br />
-    <%= f.text_field :linked_in_profile_link %>
-  </div>
-  <div class="field">
-    <%= f.label :about_me %><br />
-    <%= f.text_area :about_me %>
-  </div>
 
-  <div class="field">
-    <%= f.file_field :photo %>
-  </div>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<%= f.hidden_field :user_id , :value=>current_user.id %>
+
+<style> 
+.field
+         {background-color: #F5F5F5;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+    display: block;
+    font-size: 12px;
+    margin: 0 0 9px;
+    padding: 8.5px;}
+</style>
+
+<h4>Welcome <b style ="color:green"><%= current_user.email %></b>, please fill the information's required, that will get you  going.</h4>
+
+
+<div class="field">
+
+<table id="hor-minimalist-b" >
+
+<tr>
+    <td><strong><%= f.label :'Full Name' %></strong>
+    <%= f.text_field :full_name, :placeholder=>"Enter your Full_name" %></td>
+   </tr><br>
+</table>
+<br><br>
+<h1 style ="border-radius:5px;margin-left:50px;width:600px;text-align:center;color:black;background:orange;text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);">Tell us What Do you want to eat </h1><br><br>
+<table>
+<tr>
+<td style= "width:200px">
+
+  <b>Food Restriction </b>
+  <% for rest in FoodRestriction.find(:all) %>
+    <p><%= check_box_tag( 'profile[value_ids][]',  rest.id,
+       :onClick => "$$('#my_form input.check').each(function(box){box.checked=($('check_all').checked)?true:false});")%>
+       <%= rest.name %></p>
+  <% end %>  <td>
+<td style="margin:10px;padding-left:200px;padding-right:50px;border:0px solid blue;color:darkgreen;    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);">
+A multistep form, also known as a wizard, is a large form that has been split up into a series of pages that users can navigate through to complete the form. Not everyone is a fan of this approach, some people prefer </td>
+</tr>
+
+<tr>
+ <td><br><br><br><%= f.submit 'Proceed' :class=>'btn btn-small btn-info' %></td>
+</tr>
+
+</table>
+</div>
+
 <% end %>
+

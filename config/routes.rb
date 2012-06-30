@@ -1,10 +1,34 @@
 RealGoodFood::Application.routes.draw do
 
+  resources :posts
+
+  resources :pages
+
+  ActiveAdmin.routes(self)
+
+  devise_for :admin_users, ActiveAdmin::Devise.config
+
+  #resources :static_pages 
+  # match "/static_pages/*id" => 'static_pages#show', :as => :page, :format => false
+  get "friends/index"
+
   resources :blogs
 
-  root :to => 'home#index'
+  root :to => 'dashboards#index'
 
-  resources :events
+  get 'accept_user_to_events' => "user_to_events#accept", :as => 'accept_user_to_event'
+  get 'reject_user_to_events' => "user_to_events#reject", :as => 'reject_user_to_event'
+
+
+  #resources :events
+
+resources :events do
+     member do
+       #post :rate
+       get  :join
+       #get  :tag_cloud
+     end
+  end
 
   resources :locations
   resources :profiles
@@ -16,10 +40,12 @@ RealGoodFood::Application.routes.draw do
   get 'home/index' 
   #resources :friendships
   get 'friend_ship' => "friendships#create", :as => "friend_ship"
-
+  get 'user_to_groups' => "user_to_groups#create", :as => "user_to_groups"
+  get 'user_to_events' => "user_to_events#create", :as => "user_to_events"
 
   devise_for :users, :controllers => { :registrations => "registrations" } do
     get '/users/sign_out' => 'devise/sessions#destroy'
+    resources :friends
   end
 
 

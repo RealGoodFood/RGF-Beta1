@@ -1,0 +1,17 @@
+My Friends:
+<% unless @user == current_user %>
+<br>
+
+You do not have permission to access this page!
+<% else %>
+
+
+Current Friends:
+<%= render :partial => 'friends/friends' %><br>
+
+Requested Friends:
+<%= render :partial => 'friends/requested_friends' %><br>
+
+Pending Friends:
+<%= render :partial => 'friends/pending_friends' %><br>
+<% end %>

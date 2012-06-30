@@ -2631,7 +2631,7 @@ button.btn.small, input[type="submit"].btn.small {
   left: 0;
   display: block;
   float: left;
-  margin: 0 10px 0 0;
+  margin: 0 -12px 0 0;
 }
 .navbar .nav.pull-right {
   float: right;

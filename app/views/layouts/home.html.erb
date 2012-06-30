@@ -1,9 +1,9 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<title>Real Good Food</title>
+	<title>Real Good Food - Always Eat Awesome</title>
         <%= stylesheet_link_tag "styles.css" %>
-	<link rel="stylesheet" type="text/css" href="print.css" media="print" />
+        <link rel="stylesheet" type="text/css" href="print.css" media="print" />
         <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script> 
         <%= javascript_include_tag "equalcolumns.js" %>
         <script type="text/javascript" src="js/equalcolumns.js"></script> 
@@ -11,14 +11,15 @@
         <%= javascript_include_tag "jquery.js" %>
         <%= javascript_include_tag "facebox.js" %>
   <script type="text/javascript">
-    jQuery(document).ready(function($) {
-      $('a[rel*=facebox]').facebox({
-        loadingImage : '../images/loading.gif',
-        closeImage   : '../images/closelabel.png'
-      })
-    })
+jQuery(document).ready(function($) {
+  $("a[rel*=facebox]").facebox();
+$.facebox("#info","facebox",true);
+$.facebox.settings.closeImage = '../images/facebox/closelabel.png';
+$.facebox.settings.opacity = 1.0;
+})
   </script>
-<link href='http://fonts.googleapis.com/css?family=Fresca' rel='stylesheet' type='text/css'>
+
+<!-- <link href='http://fonts.googleapis.com/css?family=Fresca' rel='stylesheet' type='text/css'> -->
 <%= stylesheet_link_tag "MyFontsWebfontsKit.css" %>
 <%= stylesheet_link_tag "buttons.css" %>
 
@@ -39,7 +40,7 @@
                         <li><a><%= link_to "Listings", listings_path %></a></li>
                         <li><a><%= link_to "Groups", groups_path %></a></li>
  			<li><a href="/blogs">Blog</a></li>
- 			<li><a href="/join">Join Us</a></li>
+ 			<li><a href="/users/sign_up">Join Us</a></li>
 
 		</ul>
 	</nav>
@@ -50,13 +51,30 @@
 		<p>* Do you love cooking? </p><p>* Do you appreciate local or <br/>fresh food?</p><p>* Are you interested in discovering <br/>ethnical food cooked by the <br/>experts with recipes from back <br/>home? </p><p>* So RGF is the right place for you! <br/><br/><a href="#info" rel="facebox" class="button orange">Know More</a> 
 </p>
 <div id="info" style="display:none;" hidden="true">
-    <p> Hey, I'm the 'info' div! </p>
-    <p> I look like this: </p>
-    <code>
-      &lt;div id="info" style="display:none;"&gt; <br/>
-        &nbsp;&nbsp;text<br/>
-      &lt;/div&gt;
-    </code>
+<p></p>
+    <p style="font-size:20px;">Welcome to Real Good Food - our site is still under construction but if you're still interested in the site itself feel free to poke around and please do share your feedback </p>
+    <p></p>
+<p><a href="http://realgoodfood.org/blogs" rel="facebox" class="button green" target="blank">Read our blog</a> &nbsp; <a href="https://www.facebook.com/RealGoodFood" rel="facebox" class="button blue" target="blank">Like Us on Facebook</a>&nbsp;<a href="http://vimeo.com/38206084" rel="facebox" class="button purple" target="blank">Watch the Video</a></p><p> <a href="https://twitter.com/#!/devinmc" rel="facebox" class="button twitter-blue" target="blank">Use #realgoodfood @devinmc on twitter </a> </p>
+<p><!-- Begin MailChimp Signup Form -->
+<link href="http://cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+	#mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
+	/* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
+	   We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+</style>
+<div id="mc_embed_signup">
+<form action="http://realgoodfood.us4.list-manage.com/subscribe/post?u=2d63e728661a8327567030229&amp;id=48f9c5b9dd" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+	<label for="mce-EMAIL">Subscribe to our mailing list</label>
+	<input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+	<div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+</form>
+</div>
+
+<!--End mc_embed_signup--></p>
+
+<iframe src="http://player.vimeo.com/video/38206084?title=0&amp;byline=0&amp;portrait=0" width="800" height="450" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe><p><a href="http://vimeo.com/38206084">Real Good Food - The Sharing Economy Made Tasty</a> from <a href="http://vimeo.com/gianteelproductions">Giant Eel Productions</a> on <a href="http://vimeo.com">Vimeo</a>.</p>
+
+
   </div>
 		<img src="images/rgf1.png" />
 </section>
@@ -64,175 +82,101 @@
 <section id="content">
 <ul class="column">
 
-<h2 class="header-alt">Events</h2>
 <!--eqblock-->
    <li>
       <section class="block">
-	<a href="#"><img src="images/1-thumb.jpg" alt=""  /></a> 
-        <h2><a href="#">Coffee 101</a></h2> 
-      <p>Proin metus odio, ultricies eu pharetra dictum, laoreet id odio. Curabitur in odio </p> 
-        <a href="#" class="button yellow">Read More</a>
+	<%= link_to image_tag("meal.png"), listings_path %> 
+        <h2><%= link_to "Discover and Eat Food", listings_path %></h2> 
+      <p>Find Food, Be a locavore or Share your food creations with your local community. Spread love, kindness and brotherhood</a> </p> 
+        <a href="/listings" class="button yellow">start scoffing</a>
       </section>
    </li>
     <!--eqblock-->
 
    <li>
       <section class="block">
-       <a href="#"><img src="images/2-thumb.jpg" alt=""  /></a> 
-       <h2><a href="#">All About Beans</a></h2> 
-      <p>Morbi congue auctor interdum. Proin metus odio, ultricies eu pharetra dictum, laoreet id odio. Curabitur in odio augue. Phasellus sit amet metus justo. </p> 
-       <a href="#" class="button yellow">Read More</a>
+       <a href="/events"><%=link_to image_tag("calendar.png"), events_path %></a> 
+       <h2><%= link_to "Create and Attend Events", events_path %></h2> 
+      <p>Find events happening near you, attend cook offs, learn recipes or host one to flaunt what you cook the best. </p> 
+       <a href="/events" class="button yellow">start scoffing</a>
       </section>
     </li>
   <!--eqblock-->
 
     <li>
       <section class="block">
-       <a href="#"><img src="images/3-thumb.jpg" alt=""  /></a> 
-       <h2><a href="#">Compatible Foods</a></h2> 
-      <p>Phasellus sit amet metus justo. Proin metus odio, ultricies eu pharetra dictum, laoreet id odio. Curabitur in odio augue. Morbi congue auctor. </p> 
-       <a href="#" class="button yellow">Read More</a>
-      </section>
-    </li>
-
-<!--eqblock-->
-    <li>
-      <section class="block">
-       <a href="#"><img src="images/4-thumb.jpg" alt=""  /></a> 
-       <h2><a href="#">Coffee Sizzle</a></h2> 
-      <p>Proin metus odio, ultricies eu pharetra dictum, laoreet id odio. Morbi congue auctor interdum. Curabitur in odio augue. Phasellus sit amet metus justo. </p> 
-       <a href="#" class="button yellow">Read More</a>
-      </section>
-    </li>
-
-</ul>
-
-<!--eqblock-->
-<ul class="column">
-<h2 class="header-alt">Listings</h2>
-<!--eqblock-->
-<% @listing.each do |l| %>      
-  <% if l.photo.exists? then %>
-   <li>
-     <section class="block">
-       <a><%= link_to image_tag(l.photo.url(:thumb)),l  %></a>
-       <h2><%= link_to l.title, l %></h2>
-<p>Proin metus odio, ultricies eu pharetra dictum, laoreet id odio. Curabitur in odio </p> 
-        <a href="listings/<%= l.slug %>" class="button yellow">Read More</a>
-      </p>
-     </section>
-   </li>
-<br>
-  <% end %><% end %>
-</ul>
-      
-
-	<a href="#"><img src="images/1-thumb.jpg" alt=""  /></a> 
-        <h2><a href="#">Coffee 101</a></h2> 
-      <p>Proin metus odio, ultricies eu pharetra dictum, laoreet id odio. Curabitur in odio </p> 
-        <a href="#" class="button yellow">Read More</a>
-      </section>
-   </li>
-    <!--eqblock-->
-
-   <li>
-      <section class="block">
-       <a href="#"><img src="images/2-thumb.jpg" alt=""  /></a> 
-       <h2><a href="#">All About Beans</a></h2> 
-      <p>Morbi congue auctor interdum. Proin metus odio, ultricies eu pharetra dictum, laoreet id odio. Curabitur in odio augue. Phasellus sit amet metus justo. </p> 
-       <a href="#" class="button yellow">Read More</a>
-      </section>
-    </li>
-  <!--eqblock-->
-
-    <li>
-      <section class="block">
-       <a href="#"><img src="images/3-thumb.jpg" alt=""  /></a> 
-       <h2><a href="#">Compatible Foods</a></h2> 
-      <p>Phasellus sit amet metus justo. Proin metus odio, ultricies eu pharetra dictum, laoreet id odio. Curabitur in odio augue. Morbi congue auctor. </p> 
-       <a href="#" class="button yellow">Read More</a>
-      </section>
-    </li>
-
-<!--eqblock-->
-    <li>
-      <section class="block">
-       <a href="#"><img src="images/4-thumb.jpg" alt=""  /></a> 
-       <h2><a href="#">Coffee Sizzle</a></h2> 
-      <p>Proin metus odio, ultricies eu pharetra dictum, laoreet id odio. Morbi congue auctor interdum. Curabitur in odio augue. Phasellus sit amet metus justo. </p> 
-       <a href="#" class="button yellow">Read More</a>
+       <a href="/groups"><%=link_to image_tag("users.png"), groups_path %></a> 
+       <h2><%= link_to "Join or Start a Group", groups_path %></h2> 
+      <p>Create a food community in your area, be a food activist or join an existing movment. Enjoy lovely food all the time </p> 
+       <a href="/groups" class="button yellow">start scoffing</a>
       </section>
     </li>
 
 
 </ul>
 
-<ul class="column">
-  <h2 class="header-alt"> Groups</h2>
 <!--eqblock-->
-   <li>
-      <section class="block">
-	<a href="#"><img src="images/1-thumb.jpg" alt=""  /></a> 
-        <h2><a href="#">Coffee 101</a></h2> 
-      <p>Proin metus odio, ultricies eu pharetra dictum, laoreet id odio. Curabitur in odio </p> 
-        <a href="#" class="button yellow">Read More</a>
-      </section>
-   </li>
-    <!--eqblock-->
+</section>
 
-   <li>
-      <section class="block">
-       <a href="#"><img src="images/2-thumb.jpg" alt=""  /></a> 
-       <h2><a href="#">All About Beans</a></h2> 
-      <p>Morbi congue auctor interdum. Proin metus odio, ultricies eu pharetra dictum, laoreet id odio. Curabitur in odio augue. Phasellus sit amet metus justo. </p> 
-       <a href="#" class="button yellow">Read More</a>
-      </section>
-    </li>
-  <!--eqblock-->
 
-    <li>
-      <section class="block">
-       <a href="#"><img src="images/3-thumb.jpg" alt=""  /></a> 
-       <h2><a href="#">Compatible Foods</a></h2> 
-      <p>Phasellus sit amet metus justo. Proin metus odio, ultricies eu pharetra dictum, laoreet id odio. Curabitur in odio augue. Morbi congue auctor. </p> 
-       <a href="#" class="button yellow">Read More</a>
-      </section>
-    </li>
-
-<!--eqblock-->
-    <li>
-      <section class="block">
-       <a href="#"><img src="images/4-thumb.jpg" alt=""  /></a> 
-       <h2><a href="#">Coffee Sizzle</a></h2> 
-      <p>Proin metus odio, ultricies eu pharetra dictum, laoreet id odio. Morbi congue auctor interdum. Curabitur in odio augue. Phasellus sit amet metus justo. </p> 
-       <a href="#" class="button yellow">Read More</a>
-      </section>
-    </li>
-                                    </ul>
-
-				    <!--eqblock-->
-		</section>
 		
 	<footer>
     <section>
-    <h3>Left Stuff</h3>
-    <p>Left aligned text here. Proin metus odio, ultricies eu pharetra dictum, laoreet id odio. Curabitur in odio augue. Morbi congue auctor interdum. Phasellus sit amet metus justo.</p>
-    <p>Next line here</p>
+    <h3>Join Our Mailing List</h3>
+    <p><!-- Begin MailChimp Signup Form -->
+<link href="http://cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+	#mc_embed_signup{background:; clear:left; font:14px Helvetica,Arial,sans-serif; }
+       #mc_embed_signup form {
+    background: #006F3A;
+    display: block;
+    padding: 10px 0 10px 3%;
+    position: relative;
+    text-align: left;
+}
+	/* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
+	   We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+</style>
+<div id="mc_embed_signup">
+<form action="http://realgoodfood.us4.list-manage.com/subscribe/post?u=2d63e728661a8327567030229&amp;id=48f9c5b9dd" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+	<!-- <label for="mce-EMAIL"></label> -->
+	<input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+	<div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+</form>
+</div>
+
+<!--End mc_embed_signup--></p>
     </section>
     
     <section>
-    <h3>Center Stuff</h3>
-    <p>Center Text here. Proin metus odio, ultricies eu pharetra dictum, laoreet id odio. Curabitur in odio augue. Morbi congue auctor interdum. Phasellus sit amet metus justo.</p>
-    <p>Next line here</p>
+    <h3>Analytics By</h3>
+    <p><a href="http://mixpanel.com/f/partner"><img src="http://mixpanel.com/site_media/images/partner/badge_blue.png" alt="Real Time Web Analytics" /></a></p>
+    <h3>Copyright Stuff</h3>
+    <p>&copy; 2012 <a href="#" title="your site name">Real Good Food</a> All rights reserved.</p>
     </section>
     
     <section>
-    <h3>Right Stuff</h3>
-    <p>&copy; 2010 <a href="#" title="your site name">yoursite.com</a> All rights reserved.</p>
-    <p>Center Text here. Proin metus odio, ultricies eu pharetra dictum, laoreet id odio. Curabitur in odio augue. Morbi congue auctor interdum. Phasellus sit amet metus justo.</p>
+    <h3>About</h3>
+<ul>
+    <li><a href="/pages/how-it-works" title="your site name">How It Works</a></li>
+    <li><a href="/pages/team">Team</a></li>
+    <li><a href="/pages/privacy-policy">Privacy Policy</a></li>
+    <li><a href="/pages/terms-and-conditions">Terms and Conditions</a></li>
+</ul>
     </section>
 
 	</footer>
 <!-- Free template created by http://freehtml5templates.com -->
+<!-- start Mixpanel --><script type="text/javascript">(function(d,c){var a,b,g,e;a=d.createElement("script");a.type="text/javascript";a.async=!0;a.src=("https:"===d.location.protocol?"https:":"http:")+'//api.mixpanel.com/site_media/js/api/mixpanel.2.js';b=d.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b);c._i=[];c.init=function(a,d,f){var b=c;"undefined"!==typeof f?b=c[f]=[]:f="mixpanel";g="disable track track_links track_forms register register_once unregister identify name_tag set_config".split(" ");for(e=0;e<
+g.length;e++)(function(a){b[a]=function(){b.push([a].concat(Array.prototype.slice.call(arguments,0)))}})(g[e]);c._i.push([a,d,f])};window.mixpanel=c})(document,[]);
+mixpanel.init("1beae669de3dc361b3d45a44cf18a3f5");</script><!-- end Mixpanel -->
 </body>
 </html>
+<script type="text/javascript">
+  var uvOptions = {};
+  (function() {
+    var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true;
+    uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/N6P8vkpbG5yQM8xFRMGVkA.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);
+  })();
+</script>

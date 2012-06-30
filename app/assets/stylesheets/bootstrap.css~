@@ -161,10 +161,6 @@ a:hover {
 }
 .span9 {
   width: 700px;
-  background:#fff;
-  border:1px solid #fff;
-padding-left:10px
-  border-radius:4px;
 }
 .span10 {
   width: 780px;

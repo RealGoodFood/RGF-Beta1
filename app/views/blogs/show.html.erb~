@@ -1,16 +1,11 @@
-<div style = "border:1px solid #33333;">
-<h1>
-  <%= @blog.title %></h1>
-    <p style = "background:white;width:150px;margin-left:50px;"><%= time_tag @blog.created_at %></p>
-  <br>
-<p style = "border:2px solid #c0c0c0;border-radius:5px; background:#fff;padding:10px;     -webkit-box-shadow: inset 1px 1px 12px 2px #c0c0c0;
-     -moz-box-shadow: inset 1px 1px 12px 2px #c0c0c0;
-      box-shadow: inset 1px 1px 12px 2px #c0c0c0;
-">
-  <%= @blog.body.html_safe %>
-</p>
 
-</div>
+<h1><%= @blog.title %></h1>
+<p style = "border-radius:2px;background:white;width:100px;margin:5px;padding:3px;">
+ <%= time_tag @blog.created_at %></p>
+<br>
+ 
+<pre> <%= @blog.body.html_safe %></pre>
+
 
 <%= link_to 'Edit', edit_blog_path(@blog) %> |
 <%= link_to 'Back', blogs_path %>

@@ -1,6 +1,7 @@
 class ListingsController < ApplicationController
   # GET /listings
   # GET /listings.json
+  before_filter :authenticate_user!
   def index
     @listings = Listing.all
 
@@ -29,23 +30,29 @@ class ListingsController < ApplicationController
   # GET /listings/new.json
   def new
     @listing = Listing.new
-    @values = Value.all
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @listing }
-    end
+    @values = Value.find(:all)
+    #respond_to do |format|
+    #  format.html # new.html.erb
+    #  format.json { render json: @listing }
+    #end
   end
 
   # GET /listings/1/edit
   def edit
+   @puts = Listing.find(params[:id]).user_id
+     if @puts ==current_user.id
     @listing = Listing.find(params[:id])
     @values = Value.all
+     else 
+      redirect_to listings_path, :notice =>"no suffiecient privilage"
+     end
   end
 
   # POST /listings
   # POST /listings.json
   def create
     @listing = Listing.new(params[:listing])
+    @values = Value.all
 
     respond_to do |format|
       if @listing.save

@@ -1,0 +1,8 @@
+
+<% @posts.each do |post| %>
+    <a><b>Posted by <%= post.user.profile.full_name %> <%= time_ago_in_words(post.created_at) %> ago</b></a>  
+    <a><%= post.group_post %></a><hr>
+<% end %>
+</table>
+
+<br />

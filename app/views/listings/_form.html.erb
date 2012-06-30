@@ -60,7 +60,7 @@
 
   <div class="field">
     <b><%= f.label :Food_Type %></b><br />
-        <% @values.each do |value| -%>
+        <% @values.each do |v| %>
             <table width="60%" 
                    border="0"
                    cellspacing="0"
@@ -72,10 +72,10 @@
               <td width="14%" height="25" align="left">
 
                   <%= check_box_tag( 'listing[tag_list][]',
-                      value.name,
+                      v.name,
                       :onClick => "$$('#my_form input.check').each(function(box)
                                      {box.checked=($('check_all').checked)?true:false});")%>
-                 <%= value.name %>
+                 <%= v.name %>
               </td>
 
             </tr>
@@ -94,19 +94,14 @@
             <tr>
 
    <td width="14%" height="25" align="left">
-      <b>
-       <%= f.label :Suggested_Storage %>
-      </b><br />
+    <b><%= f.label :Suggested_Storage %></b><br />
 
-    <p><%= f.radio_button  :eat_by_date_id, 1 %>
-           <%= f.label :eat_by_date_id, "Shelf" %></p>
+    <b><%= f.radio_button  :eat_by_date_id, 1 %> Shelf <br>
 
-    <p><%= f.radio_button  :eat_by_date_id, 2 %>
-           <%= f.label :status_2, "Freezer" %></p>
+    <%= f.radio_button  :eat_by_date_id, 2 %> Freezer <br>
   
-    <p><%= f.radio_button  :eat_by_date_id, 3 %>
-           <%= f.label :status_3, "Fridge" %></p>
-    <br />
+    <%= f.radio_button  :eat_by_date_id, 3 %> Fridge </b><br>
+
   </td>
 </tr>
   </div><br />
@@ -123,7 +118,7 @@
 <br />
   <div class="actions">
     <a>
-     <span><%= f.submit :class=>'boton' %></span>
+     <span><%= f.submit :class=>'btn btn-small btn-info' %></span>
     </a>
    </div>
   </div>

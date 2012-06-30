@@ -51,6 +51,12 @@ function initialize_additional_fields()
  			$('#event_location_id').val('');
  			$('#event_location_id').parent().slideDown();
  			$('#event_location_id').focus();
+ 			$('#event_food_type').val('');
+ 			$('#event_food_type').parent().slideDown();
+ 			$('#event_food_type').focus();
+ 			$('#event_food_for_people').val('');
+ 			$('#event_food_for_people').parent().slideDown();
+ 			$('#event_food_people').focus();
  			
  		} if(event == 'Swap') {
  			$('#event_ev_swap').val('');
@@ -83,8 +89,12 @@ function initialize_additional_fields()
 
 
 
-<div id="center-inner-container">
+<div style ="background:#ffffff;border:3px solid #ffffff;border-radius:8px;padding:20px">
 
+<style>
+.floatright { float: right; padding-top:3px;padding-left:3px;padding-right:3px;border:2px solid #fff;border-radius:8px;background:#000 }
+.content p{font-family: 'Chau Philomene One', sans-serif;color :#006666}
+</style>
 
 <%= nested_form_for(@event, :html => {:multipart => :true }) do |f| %>
   <% if @event.errors.any? %>
@@ -103,12 +113,52 @@ function initialize_additional_fields()
   <%= f.hidden_field :user_id, :value => current_user.id %>
 
   <div class="field">
-    <b><%= f.label :title %></b><br />
+    <b><%= f.label :title %></b>
     <%= f.text_field :name, 
-                     :placeholder=>"food listing name",
+                     :placeholder=>"Food Title",
                      :class=>"inner-inputbox-large",
                      :id=>"textfield" %><br />
   </div><br /><br />
+
+  <div class="styled-select">
+    <%= f.label :'Event Type' %>
+    <%= select(:event, :event_type,
+        ['Swap','Dinner Party','Collaborative Cooking Event','Potluck'], { :prompt => true }) %>
+
+  </div><br />
+
+<div class="field">  
+   Potluck  :<br> <%= f.text_field :ev_pot %><br>
+   Potluck_location  :<br> <%= f.text_field :location_id %><br>
+   Food Type  :<br> <%= f.text_field :food_type %><br>
+   Food for_people  :<br> <%= f.text_field :food_for_people %>
+</div>
+
+  <div class="field">
+    Swap Event Name  :<br> <%= f.text_field :ev_swap %><br>
+    <%= f.radio_button  :lis_tings_swap_behaviour, 1 %> Listings enabled but not required<br>
+
+    <%= f.radio_button  :lis_tings_swap_behaviour, 2 %> Listings enabled and required <br>
+  
+    <%= f.radio_button  :lis_tings_swap_behaviour, 3 %> No Listings enabled<p></p>
+  
+     Food for people  :<br> <%= f.text_field :food_for_people %>
+
+  </div>
+
+  <div class="field">
+   Party  :<br> <%= f.text_field :ev_party %><br>
+     Food for people  :<br> <%= f.text_field :food_for_people %>
+  </div>
+
+  <div class="field">
+   Collaborative  :<br> <%= f.text_field :ev_collaborative %><br>
+     Food for people  :<br> <%= f.text_field :food_for_people %>
+  </div>
+
+
+<br/><br />
+
 
 
   <div class="field">
@@ -120,8 +170,9 @@ function initialize_additional_fields()
   </div><br />
 
   <div class="field">
-    <%= f.label :starting_on %><br />
+    <%= f.label :starting_on %>
     <%= f.date_select :event_starting_on %>
+    <%= f.hidden_field :no_of_guests_attending, :value=>0 %>
   </div><br />
 
 <!--  <div class="field">
@@ -130,90 +181,42 @@ function initialize_additional_fields()
   </div><br /> -->
 
   <div class="field">
-    <%= f.label :UploadAnImage %><br />
+    <%= f.label :UploadAnImage %>
     <%= f.file_field :photo %>
   </div><br />
 
   <div class="field">
-    <%= f.label :Address %><br />
+    <%= f.label :Address %>
     <%= f.text_field :address,
                      :class=>"inner-inputbox-large",
                      :id=>"textfield" %><br />
   </div><br />
 
   <div class="field">
-    <%= f.label :street %><br />
+    <%= f.label :street %>
     <%= f.text_field :street, :class=>"inner-inputbox-large",
                      :id=>"textfield" %><br />
   </div><br />
 
   <div class="field">
-    <%= f.label :city %><br />
+    <%= f.label :city %>
     <%= f.text_field :city,:class=>"inner-inputbox-large",
                      :id=>"textfield" %><br />
   </div><br />
 
   <div class="field">
-    <%= f.label :zip %><br />
+    <%= f.label :zip %>
     <%= f.text_field :zip,:class=>"inner-inputbox-large",
                      :id=>"textfield" %><br />
   </div><br />
 
   <div class="field">
-    <%= f.label :state %><br />
+    <%= f.label :state %>
     <%= f.text_field :state,:class=>"inner-inputbox-large",
                      :id=>"textfield" %><br />
   </div><br />
 
-  <div class="styled-select">
-    <%= f.label :'Event Type' %><br>
-    <%= select(:event, :event_type,
-                 ['','Swap','Dinner Party','Collaborative Cooking Event','Potluck']) %>
-  </div><br />
-
-<div class="field">  
-<table>
-  <%= f.fields_for :potlucks do |pot| %>
-  <tr>
-      <td>Food Name :<%= pot.text_field :food_name,
-                                        :class=>"inner-inputbox-large",
-                                        :id=>"textfield" %></td><br>
-      <td>Food For People :<%= pot.text_field :food_for_people,
-                                              :size =>10,
-                                              :class=>"inner-inputbox-large",
-                                              :id=>"textfield" %></td><br>
-      <td>Food Type :<%= pot.text_field :food_type,
-                                        :class=>"inner-inputbox-large",
-                                        :id=>"textfield" %></td><br>
-  </tr>
-       <% end %>
-</table>
-  </div>
-
-  <div class="field">
-    Total number of spaces available  :<br><%= f.text_field :no_of_guests,
-                                                            :class=>"inner-inputbox-large",
-                                                            :id=>"textfield" %>
-</div>
-
-  <div class="field">
-   <br><p> <%= f.check_box :ev_swap %> Listings enabled but not required</p>
-        <%= f.check_box :ev_swap %> Listings enabled and required</p>
-        <%= f.check_box :ev_swap %> No Listings enabled</p>
-  </div>
-
-  <div class="field">
-   Party  :<br> <%= f.text_field :ev_party %>
-  </div>
-
-  <div class="field">
-   Collaborative  :<br> <%= f.text_field :ev_collaborative %>
-  </div>
-
-
-<br/><br />
-
-<%= f.submit %>
+<%= f.submit :class => 'btn btn-info'  %>
 
 </div>
 <br />

@@ -10,7 +10,6 @@ class CreateLocations < ActiveRecord::Migration
       t.float :latitude
       t.float :longitude
       t.integer :profile_id
-      t.boolean :gmaps
 
       t.timestamps
     end

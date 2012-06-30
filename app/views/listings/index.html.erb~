@@ -56,7 +56,7 @@
         <% end %><br></div>
    <div class="sidebar">
    <b style = "font-size:20px;"><%= link_to listing.title, listing %> </b>
-        <%= time_tag listing.start_date %><br><br>
+        -- <%= time_tag listing.start_date, :class => 'btn btn-mini' %><br><br>
    <p style ="font-size:14px;"><%=h truncate(listing.description, :length => 200).html_safe %></p>
       <b><%= link_to "continued", listing %></b><br>
 
@@ -65,7 +65,7 @@
 
 <br />
 
-<h3><%= button_to 'New Listing', new_listing_path, :method=>:get %></h3>
+<h3><%= button_to 'New Listing', new_listing_path, :method=>:get,  :class => 'btn btn-success' %></h3>
 
 
 

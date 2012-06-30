@@ -1,26 +1,32 @@
 <div style ="background:#ffffff;border:3px solid #ffffff;border-radius:8px;padding:20px">
 <style>
-.floatright { float: right; padding-bottom:2px;height:auto;border:2px solid #333333;border-radius:8px; }
+.floatright { float: right; padding-top:3px;padding-left:3px;padding-right:3px;border:2px solid #fff;border-radius:8px;background:#000 }
+.content p{font-family: 'ubuntu', sans-serif}
 </style>
+
+<link href='http://fonts.googleapis.com/css?family=Russo+One' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Averia+Libre' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Chau+Philomene+One' rel='stylesheet' type='text/css'>
 
 <div class ="floatright">
 <% if @listing.photo.exists? then %>
-	<%= image_tag(@listing.photo.url) %>
+	<%= image_tag(@listing.photo.url(:small)) %>
 <% end %>
 </div>
 <br>
 <b>
  <% if @listing.user_id == current_user.id %>
-  <%= link_to 'Edit', edit_listing_path(@listing) %> |
-  <%= link_to 'Remove', @listing, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to 'View All Listings', listings_path %>
+  <%= link_to 'Edit', edit_listing_path(@listing),  :class => 'btn btn-success' %> 
+  <%= link_to 'Remove', @listing, :confirm => 'Are you sure?', :method => :delete,  :class => 'btn btn-success' %> 
+  <%= link_to 'View All Listings', listings_path, :class => 'btn btn-success' %>
 <% else %>
-  <%= link_to 'View All Listings', listings_path %>
+  <%= link_to 'View All Listings', listings_path, :class => 'btn btn-mini' %>
 <% end %>
 </b>
 
+<div class ="content">
 <br><br>
-  <h1><%= @listing.title %></h1>
+  <h3 style ="color:#3B2501"><%= @listing.title %></h3>
 <br>
 
 <p>
@@ -47,14 +53,10 @@
 </p>
 <br>
 
-<table>
 <b>Food type:</b><br />
-<% @listing.tags.each do |f| %>
-<tr>
-<td><%= f.name %></td>
-</tr>
-<% end %>
-</table>
+<ol><% @listing.tags.each do |f| %>
+<li><%= f.name %></li>
+<% end %></ol>
 <br>
 
 <p>
@@ -79,7 +81,6 @@
 <br />
 
 
-<% unless @listing.comments.empty? %>
   <b> 
 	<%= pluralize(@listing.comments.size, 'comment') %>
   </b>
@@ -93,6 +94,7 @@ margin: 10px auto;
 background-color: #fff;
 color: #333;
 border: 1px solid gray;
+border-radius: 8px;
 line-height: 130%;
 padding : 4px;
 }
@@ -120,8 +122,13 @@ color:#000000;
 
 <div id ="comment">
 
-<div id ="avatar" style ="padding-left:25px;padding-top:20px;">
-      <%= image_tag(current_user.profile.photo(:small), :size =>"150x150") %>
+<div id ="avatar" style ="padding-left:25px;padding:20px;">
+      <% unless @comment.listing.user.profile.photo? %>
+          <%= image_tag("../images/gravatar-60-giveo.jpg",:size =>"50x50") %>
+      <% else %>
+         <%= image_tag current_user.profile.photo.url(:profile)  %>
+<% end %>
+
       <strong style  = color:blue>
          <%= h comment.user.email  %>
      </strong>
@@ -143,5 +150,5 @@ color:#000000;
 <% end %>
 <%= render :partial => 'comments/form' %>
 
+
 </div>
-<% end %>

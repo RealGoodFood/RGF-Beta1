@@ -1,9 +1,10 @@
 class BlogsController < ApplicationController
+#authorize_resource :only => [:index, :show]
   # GET /blogs
   # GET /blogs.json
   def index
-    @blogs = Blog.all
-
+    @blogs = Blog.order('created_at DESC').page params[:page]
+    @blog_archive = Blog.all
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @blogs }
@@ -14,6 +15,7 @@ class BlogsController < ApplicationController
   # GET /blogs/1.json
   def show
     @blog = Blog.find(params[:id])
+    @blog_archive = Blog.all
 
     respond_to do |format|
       format.html # show.html.erb
@@ -25,7 +27,7 @@ class BlogsController < ApplicationController
   # GET /blogs/new.json
   def new
     @blog = Blog.new
-
+    @blog_archive = Blog.all
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @blog }

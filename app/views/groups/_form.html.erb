@@ -18,6 +18,8 @@
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
+
+
   <div class="field">
     <%= f.label :description %><br />
     <%= f.cktext_area :description, :toolbar=>'Full', :width=>'800px', :height=>'200px' %>
@@ -27,6 +29,12 @@
     <%= f.label :Upload_Image %>
     <%= f.file_field :photo %>
   </div> 
+
+  <div class="field">
+    <%= f.label :Address %><br />
+    <%= f.text_field :address, :size=>"100" %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

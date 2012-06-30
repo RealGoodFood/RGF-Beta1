@@ -1,0 +1,44 @@
+class UserToEventsController < ApplicationController
+
+  def create
+    @user_to_events = UserToEvent.create!( :user_id => current_user.id, :event_id => params[:event_id])
+     if @user_to_events.save
+         
+      redirect_to event_path(@user_to_events.event.slug)
+     end
+  end
+
+  def accept
+    @event_accept = UserToEvent.find(params[:user_to_event_id])
+
+    @event_accept.accept!
+    respond_to do |format|
+       if @event_accept.update_attributes(params[:user_to_event])
+         format.html { redirect_to dashboards_path, notice: 'Status was successfully updated.' }
+         format.json { head :ok }
+       else
+         format.html { render action: "edit" }
+         format.json { render json: @event_accept.errors, status: :unprocessable_entity }
+       end
+     end
+  end
+
+  def reject
+    @event_accept = UserToEvent.find(params[:user_to_event_id])
+    @event_accept.reject!
+
+    respond_to do |format|
+       if @event_accept.update_attributes(params[:user_to_event])
+
+         format.html { redirect_to @event_accept, notice: 'Status was successfully Rejected.' }
+         format.json { head :ok }
+       else
+         format.html { render action: "edit" }
+         format.json { render json: @event_accept.errors, status: :unprocessable_entity }
+       end
+     end
+  end
+
+
+
+end

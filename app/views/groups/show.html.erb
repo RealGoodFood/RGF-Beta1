@@ -1,19 +1,78 @@
-<p id="notice"><%= notice %></p>
-
+<div style ="background:#ffffff;border:3px solid #ffffff;border-radius:8px;padding:20px">
+<style>
+.floatright { float: right; padding-top:3px;padding-left:3px;padding-right:3px;border:2px solid #fff;border-radius:8px;background:#000 }
+.content p{font-family: 'Chau Philomene One', sans-serif;color :#006666}
+</style>
+<div class ="floatright">
 <% if @group.photo.exists? then %>
 	<%= image_tag @group.photo.url(:small) %>
 <% end %>
+</div>
+<br><br>
 
-<p>
-  <b>Name:</b>
-  <%= @group.name %>
-</p>
+<div class ="content">
+<h1><%= @group.name %></h1> (<%= @group.user_to_groups.count %> members)<br><br>
+
+
+
+<u><strong>Members of this group</strong></u><br>
+
+<% @group.user_to_groups.each do |g| %>
+   
+ <a style = "line-height:100%;vertical-align: middle;">
+     <%= link_to g.user.profile.full_name, g.user.profile %><br>
+     <% end %>
+ <b>
+
+<% if @user== current_user.id %>
+<div style ="margin-left:400px;text-align:center;color:green;border:0px solid #000;background:white">
+</div><br><br>
+<% else %>
+<%= link_to "Intersted in joining", user_to_groups_path(:gr_id => @group.id), :class => 'btn btn-success' %>
+<% end %><br><br>
+ <% if @group.user_id == current_user.id %>
+ <%= link_to 'Edit', edit_group_path(@event),  :class => 'btn btn-success' %> 
+ <%= link_to 'Remove', @group, :confirm => 'Are you sure?', :method => :delete, :class => 'btn btn-success' %> 
+ <%= link_to 'View All Groups', groups_path,  :class => 'btn btn-success' %>
+<% else %>
+ <%= link_to 'View All Groups', groups_path,  :class => 'btn btn-success' %>
+<% end %>
+</b>
+<br><br>
 
 <p>
   <b>Description:</b>
   <%= @group.description.html_safe %>
 </p>
+<br>
+<br>
+<p style = "border:3px solid #333333;width:400px;padding:0px;border-radius:8px;">
+<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=14&markers=#{@group.latitude}%2C#{@group.longitude}" %>
+</p>
+<br />
+
+<% for event in @group.nearbys(20) %>  
+  <li><%= link_to event.address, event %>   
+    (<%= event.distance.round(2) %> miles)</li>  
+<% end %> 
+<br><br>
+<pre><h1> Group Activity</h1></pre>
+ <%= render :partial =>"posts/form" %>
+<pre> 
+
+<%= render :partial =>"posts/post" %>
 
 
-<%= link_to 'Edit', edit_group_path(@group) %> |
-<%= link_to 'Back', groups_path %>
+<% unless @activity.nil? %>
+<strong>Latest Users to this group</strong>
+<% @activity.each do |a| %>
+<pre> 
+<p><% if a.user.profile.photo.exists? then %>
+  <%= image_tag(a.user.profile.photo.url(:thumb),:size =>"50x50") %> <p><%= a.user.profile.full_name %> joined at <%= time_tag a.created_at %></p>
+<% else %>
+  <%= image_tag("../images/gravatar-60-giveo.jpg",:size=>"50x50") %> <p><%= a.user.profile.full_name %> joined at <%= time_tag a.created_at %></p>
+<% end %>
+</pre>
+<% end %>
+<% end %>
+</pre>

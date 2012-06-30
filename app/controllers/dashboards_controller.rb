@@ -9,7 +9,7 @@ class DashboardsController < ApplicationController
                           :conditions => ['user_id = ?', current_user],
                           :per_page => 5)
 
-  @requested_event = MemberAttendingEventRegister.find_all_by_owner_id_and_state(current_user, 'request_sent')
+  #@requested_event = MemberAttendingEventRegister.find_all_by_owner_id_and_state(current_user, 'request_sent')
 
   @group = Group.paginate(:page => params[:page],
                           :conditions => ['user_id = ?', current_user],
@@ -18,6 +18,7 @@ class DashboardsController < ApplicationController
   @latest_event = Event.where(:created_at => 1.days.ago .. 1.days.from_now)
 
   @users = User.all  
+  @requested_events = UserToEvent.find_all_by_owner_id_and_state(current_user, 'request_sent')
 
  end
 

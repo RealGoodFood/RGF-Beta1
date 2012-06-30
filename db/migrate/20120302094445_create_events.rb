@@ -5,6 +5,8 @@ class CreateEvents < ActiveRecord::Migration
       t.text :event_description
       t.date :event_starting_on
       t.date :event_ending_on
+      t.string :food_type
+      t.integer :food_for_people
       t.integer :no_of_guests
       t.integer :no_of_guests_attending
       t.integer :user_id

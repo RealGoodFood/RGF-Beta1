@@ -4,13 +4,26 @@
 <% else %>
 <h6>[<%= link_to 'Edit Profile', edit_profile_path(@profile) %>]</h6>
 <% end %>
-<br>      
+<br>   
+
+<div class ="floatright">
+<p><% if @profile.photo.exists? then %>
+<pre>  <%= image_tag(@profile.photo.url(:small)) %>
 <h3>About your cooking interests</h3>
-  <pre><%= @profile.about_me %></pre>
-  <h4>About your favorite foods</h4>
-          <% @profile.values.each do |f| %>
-            <pre><%= f.name %></pre>
-          <% end %>
+  <b><%= @profile.about_me %></b></pre>
+<% else %>
+    <pre> <%= image_tag("../images/gravatar-60-giveo.jpg",:size=>"200x200") %>
+<h3>About your cooking interests</h3>
+  <b><%= @profile.about_me %></b></pre>
+<% end %>
+</div>
+<br>
+   
+
+  <h4>About your favorite foods</h4><br>
+     <pre style ="color:green;width:200px;line-height:10%;font-size:13px;"><% @profile.values.each do |f| %>
+        <p style = "margin-left:30px;font-size:12px;"><%= f.name %></p>
+     <% end %></pre>
  <h5>My location</h5>
           <% if @profile.location.nil? %>
             <pre>NO address specified .</pre>
@@ -20,6 +33,7 @@
 <h5>Personal Contact </h5>
   <pre><%= image_tag "cell.jpeg",:size =>"20x30" %> : <strong><%= @profile.contact_number %></strong></pre>
 <br />
+
 
 <b>Social Links</b>
 <p>
@@ -31,8 +45,11 @@
 
 </p>
 
-<p style = "border:3px solid #333333;width:400px;padding:0px;border-radius:8px;"><%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=14&markers=#{@profile.location.latitude}%2C#{@profile.location.longitude}" %></pre>
+<p style = "border:3px solid #333333;width:400px;padding:0px;border-radius:8px;"><%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=14&markers=#{@profile.location.latitude}%2C#{@profile.location.longitude}" %></p>
+<%= link_to "Edit My Location", edit_location_path(@profile.location),  :class => 'btn btn-success'%>
 
+<br><br>
+<h1>NearBy Groups </h1>
 
 
 

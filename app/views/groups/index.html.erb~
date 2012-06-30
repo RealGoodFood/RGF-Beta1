@@ -1,4 +1,5 @@
 <head>
+
 <style>
 
 .wrap {
@@ -22,21 +23,23 @@
 
 .container {
      width:700px;
+     border: 1px solid #0088CC;
      border-radius:8px;
+     color: #000;
      margin: 0 0 12px;
      padding-top: 6px; 
      padding-left:5px;
      padding-bottom:5px;
      background: no-repeat scroll left top #c0c0c0; 
      background: #fff;
-     -webkit-box-shadow: inset 1px 1px 12px 2px #c0c0c0;
-     -moz-box-shadow: inset 1px 1px 12px 2px #c0c0c0;
-      box-shadow: inset 1px 1px 12px 2px #c0c0c0;
+     -webkit-box-shadow: inset 1px 1px 12px 2px #fff;
+     -moz-box-shadow: inset 1px 1px 12px 2px #fff;
+      box-shadow: inset 1px 1px 12px 2px #fff;
    }
 
 .box {
-    background: #eee;
-    border: 1px solid #ccc;
+    background: #fff;
+    border: 0px solid #0088CC;
     border-radius:5px;
     padding: 10px;
     margin: 5px;
@@ -54,12 +57,12 @@
 	  <%= link_to image_tag(group.photo.url(:thumb)),group  %>
         <% end %><br></div>
    <div class="sidebar">
-    <b style = "font-size:20px;"><%= group.name %></b> <br><br>
+    <b style = "font-size:20px;"><%= link_to group.name, group %></b> <br><br>
    <%= truncate(group.description, :length => 100).html_safe %>
-      <%= link_to "continued", group %><br>
+      <%= link_to 'continued', group %><br>
 </div></div>
 <% end %>
 
 <br />
 
-<%= button_to 'New Group', new_group_path, :method =>:get %>
+<%= button_to 'New Group', new_group_path, :method =>:get, :class => 'btn btn-mini btn-danger' %>

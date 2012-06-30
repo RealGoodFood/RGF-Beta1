@@ -1,0 +1,12 @@
+<%= semantic_form_for @page do |f| %>
+  <%= f.inputs do %>
+    <%= f.input :title %>
+    <%= f.input :body %>
+    <%= f.input :meta %>
+    <%= f.input :slug %>
+  <% end %>
+
+  <%= f.actions do %>
+    <%= f.action :submit, :as => :input %>
+  <% end %>
+<% end %>

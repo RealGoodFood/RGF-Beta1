@@ -18,11 +18,17 @@ gem 'gmaps4rails'
 gem 'will_paginate'
 gem 'simple_form'
 gem "nested_form", :git => 'git://github.com/ryanb/nested_form.git'
-gem 'amistad'
-gem "ckeditor", "~> 3.6.0"
+#gem 'amistad'
+gem 'workflow'
+gem "ckeditor", "3.7.0.rc3"
 gem "carrierwave"
+gem 'activeadmin'
+gem "meta_search",    '>= 1.1.0.pre'
+gem 'kaminari'
+gem 'formtastic', "~>2.1.1"
+gem "cancan"
 gem "mini_magick"
-
+gem 'twitter-bootstrap-rails'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

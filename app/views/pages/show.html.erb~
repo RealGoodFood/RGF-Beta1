@@ -1,0 +1,13 @@
+
+<style>
+.floatright { margin:10px;float: right; padding-top:3px;padding-left:3px;padding-right:3px;padding-bottom:3px;border:2px solid #fff;border-radius:8px;background:#000 }
+.content p{font-family: 'Chau Philomene One', sans-serif;color :#006666}
+</style>
+
+
+<div class="floatright">
+<div style ="background:#fff;border:3px solid #ffffff;border-radius:8px;padding:20px">
+     <h1><%= @page.title %></h1>
+     <p></p>
+     <%= @page.body.html_safe %>
+</div></div>

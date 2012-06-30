@@ -1,10 +1,11 @@
 class Event < ActiveRecord::Base
 
+  has_many :user_to_events
   has_many :groups  
 #  has_many :potlucks
   has_many :member_attending_event_registers, :dependent => :destroy
   has_many :users, :through => :member_attending_event_registers
-
+  
   belongs_to :profile
   belongs_to :user
   belongs_to :event_category
@@ -25,19 +26,16 @@ class Event < ActiveRecord::Base
       }  
 
    geocoded_by :event_address
+   #geocoded_by :address   # can also be an IP address
+   after_validation :geocode          # auto-fetch coordinates
+   reverse_geocoded_by :latitude, :longitude
+   after_validation :reverse_geocode  # auto-fetch address
+
+
+geocoded_by :event_address
 
 def event_address
-  [address,street, city, state, country].compact.join(', ')
+  [street, city, state, zip, country].compact.join(', ')
 end
-
-  acts_as_gmappable
-
-   def gmaps4rails_address
-    self.address
-   end
-
-   def gmaps4rails_infowindow
-    "<h4>#{name}</h4>" << "<h4>#{address}</h4>"
-   end
 
 end

@@ -97,7 +97,7 @@ background-color: #006DCC;
 <div class="field">
 <tr>
     <td><strong><%= f.label :Google_plus_profile_path %></strong><br />
-    <%= f.text_field :google_plus_profile_link, :placeholder =>"GooglePlus Profile Id" %></td></tr>
+    <%= f.text_field :google_plus_link, :placeholder =>"GooglePlus Profile Id" %></td></tr>
   </div>
 
 

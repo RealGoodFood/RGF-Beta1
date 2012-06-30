@@ -1,6 +1,12 @@
-
 <style>
-
+.well{
+    float: right;
+    margin-right: -900px;
+    padding: 10px;
+    text-shadow: 1px 1px #FFFFFF;
+    width: 308px;
+    padding-left:30px;
+}
 .wrap {
     background: #aaa;
     margin: 0 auto;
@@ -25,10 +31,11 @@
      border: 1px solid #0088CC;
      border-radius:8px;
      color: #000;
-     margin: 0 0 12px;
+     margin-left: -250px;
      padding-top: 6px; 
      padding-left:5px;
      padding-bottom:5px;
+     margin-bottom: 10px;
      background: no-repeat scroll left top #c0c0c0; 
      background: #fff;
      -webkit-box-shadow: inset 1px 1px 12px 2px #fff;
@@ -47,22 +54,19 @@
 
 </style>
 
-
-
-
-
-
-
 <% @blogs.each do |blog| %>
     <div class="wrap">
     <div class="container">
         <div class="box">
-     <b style = "font-size :20px"><%= link_to blog.title, blog %><br>
-     <%= truncate blog.body, :length => 100 %>
+     <b style = "font-size :20px"><%= link_to blog.title, blog %></b><br>
+     <%= truncate(blog.body, :length => 1500).html_safe %>
       <%= link_to "continued", blog %><br>
 </div></div>
 <% end %>
 
 <br />
 
-<%= link_to 'New Blog', new_blog_path %>
+<p></p><p></p>
+
+<p><%= paginate @blogs %></p>
+

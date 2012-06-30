@@ -67,10 +67,10 @@
  *
  */
 (function($) {
-  $.facebox = function(data, klass) {
+  $.facebox = function(data, klass, isOnload) {
     $.facebox.loading()
-
-    if (data.ajax) fillFaceboxFromAjax(data.ajax, klass)
+    if (isOnload) fillFaceboxFromHref(data,"facebox")
+    else if (data.ajax) fillFaceboxFromAjax(data.ajax, klass)
     else if (data.image) fillFaceboxFromImage(data.image, klass)
     else if (data.div) fillFaceboxFromHref(data.div, klass)
     else if ($.isFunction(data)) data.call($)

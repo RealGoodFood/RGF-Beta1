@@ -1,7 +1,7 @@
 class Profile < ActiveRecord::Base
   
  validates_presence_of :full_name
-
+   geocoded_by :event_address
  extend FriendlyId
  friendly_id :full_name, :use => :slugged
 

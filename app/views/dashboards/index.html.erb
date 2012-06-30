@@ -1,114 +1,169 @@
-<style>
 
-#sidebar {
-    background: -moz-linear-gradient(center top , #EBEBEB, #FFFFFF 80px) repeat scroll 0 0 transparent;
-    border: 0px solid #FFFFFF;
-    border-radius: 4px;
-    box-shadow: 0 0 20px #B4B4B4;
-    float: right;
-    padding: 20px 20px 40px;
-    position: relative;
-    width: 250px;
-}
-#sidebar img {
-    float: left;
-}
-.text, .photo, .quote, .link, .chat, .audio, .video {
-    float: left;
-    margin-bottom: 30px;
-}
+<% @requested_events.each do |e| %>
+<li>
 
-div.content {
-    border: #48f solid 3px;
-    clear: left;
-    padding: 1em;
-}
+  <b>
+  <%= link_to e.user.profile.full_name, e.user.profile(e) %>
+  wants to join your Event <b> <%= link_to e.event.name, e.event  %></b>
 
-ol#toc {
-    height: 2em;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
+  <b>
+  [ <%= link_to 'Accept ', accept_user_to_event_path(:user_to_event_id => e), :method =>:post %> | 
+    <%= link_to 'Reject ', reject_user_to_event_path(:user_to_event_id => e), :method =>:post %> ]
+  </b>
 
-ol#toc a {
-    background: #bdf url(tabs.gif);
-    color: #008;
-    display: block;
-    float: left;
-    height: 2em;
-    padding-left: 10px;
-    text-decoration: none;
-}
+</li>
 
-ol#toc a:hover {
-    background-color: #3af;
-    background-position: 0 -120px;
-}
-
-ol#toc a:hover span {
-    background-position: 100% -120px;
-}
-
-ol#toc li {
-    float: left;
-    margin: 0 1px 0 0;
-}
-
-ol#toc li.current a {
-    background-color: #48f;
-    background-position: 0 -60px;
-    color: #fff;
-    font-weight: bold;
-}
-
-ol#toc li.current span {
-    background-position: 100% -60px;
-}
-
-ol#toc span {
-    background: url(tabs.gif) 100% 0;
-    display: block;
-    line-height: 2em;
-    padding-right: 10px;
-}
+<% end %>		
+			<style type="text/css">
+				div#header a img { opacity: .5; }
+				div#header a:hover img { opacity: 1; }
+				div#header h4 a { color: #fff; opacity: .5; border-left-color: #999; border-left-color: rgba(255,255,255,.25); }
+				div#header h4 a:hover { color: #fff; opacity: 1; }
+				div.page-header { border-color: #000; border-color: rgba(0,0,0,.5); }
+				div.page-header h1 { color: #fff; }
+				div.page-header h2 { color: #fff; letter-spacing: 0; }
+				div#header a.button { border: 0; -webkit-box-shadow: 0 1px 3px rgba(0,0,0,.5); }
+			</style>
+		    <style type="text/css">
+		/* Place all stylesheet code here */
+		
+		div#header a img, div#header h4 a { opacity: 1; text-shadow: 0 0 1px rgba(0,0,0,.01); }
 
 
-</style>
+		div#content a { color: #000; font-weight: bold; }
+		div#content a:hover { color: #333; }
+		
+		div#content h1, div#content h2, div#content h3, div#content h4, div#content h5, div#content h6, div#content p { text-shadow: 0 1px 1px rgba(255,255,255,.5); }
+		div#content h1, div#content h2, div#content h3, div#content h4, div#content h5, div#content h6 { color: #62412e; }
+		div#content h2 { margin-bottom: 0; }		
+		div#content p { font-size: 14px; line-height: 20px; margin-bottom: 20px; color: #584941; }
+		div#content p small { display: block; font-size: 12px; line-height: 18px; color: #584941; }
+		
+		div#footer { padding: 0 0 36px; }
+	
+		div#pageHeader h1 { font-size: 45px; margin-bottom: 4px; color: #62412e; text-shadow: 0 1px 1px rgba(255,255,255,.5); }
+		div#pageHeader p { font-size: 18px; line-height: 24px; margin-right: 25%; margin-bottom: 20px; color: #584941; text-shadow: 0 1px 1px rgba(255,255,255,.5); }
+		div#pageHeader p small { font-size: 14px; line-height: 18px; color: #584941; opacity: .75; }
 
-<div id="sidebar" style ="float:right;padding:10px;border:0px solid black;">
-  <% @users.each do |user| %>
-<div id="user">
-      <% if user.email != current_user.email %>
-        <dd style = "float:left">
-          <%= h user.profile.full_name %>
-        </dd>
 
-        <dd style ="float:right;padding-right:10px">
-          <%= link_to "Add Friend", friend_ship_path(:friend_id => user), :method => :post %>
-        </dd>
-      <% end %>
-    </div>
-  <% end %>
+		pre { background: #f5f5f5; margin: 0 0 18px; padding: 13px 18px 14px; -webkit-border-radius: 3px; -moz-border-radius: 3px; text-shadow: 0 1px 1px #fff; font-size: 11px; line-height: 16px; }
+
+		/* -------------------------------------------------- */
+		
+		ul.polaroids { width: 970px; margin: 0 0 18px -30px; }
+		ul.polaroids li { display: inline; }
+		ul.polaroids a { background: #fff; display: inline; float: left; margin: 0 0 27px 30px; width: auto; padding: 10px 10px 15px; text-align: center; font-family: "Marker Felt", sans-serif; text-decoration: none; color: #333; font-size: 18px; -webkit-box-shadow: 0 3px 6px rgba(0,0,0,.25); -moz-box-shadow: 0 3px 6px rgba(0,0,0,.25); -webkit-transform: rotate(-2deg); -webkit-transition: -webkit-transform .15s linear; -moz-transform: rotate(-2deg); }
+		ul.polaroids img { display: block; width: 190px; margin-bottom: 12px; }
+		ul.polaroids a:after { content: attr(title); }
+		
+		ul.polaroids li:nth-child(even) a { -webkit-transform: rotate(2deg);  -moz-transform: rotate(2deg); }
+		ul.polaroids li:nth-child(3n) a { -webkit-transform: none; position: relative; top: -5px;  -moz-transform: none; }
+		ul.polaroids li:nth-child(5n) a { -webkit-transform: rotate(5deg); position: relative; right: 5px;  -moz-transform: rotate(5deg); }
+		ul.polaroids li:nth-child(8n) a { position: relative; right: 5px; top: 8px; }
+		ul.polaroids li:nth-child(11n) a { position: relative; left: -5px; top: 3px; }
+		
+		ul.polaroids li.messy a { margin-top: -375px; margin-left: 160px; -webkit-transform: rotate(-5deg); -moz-transform: rotate(-5deg); }
+		
+		ul.polaroids li a:hover { -webkit-transform: scale(1.25); -moz-transform: scale(1.25); -webkit-box-shadow: 0 3px 6px rgba(0,0,0,.5); -moz-box-shadow: 0 3px 6px rgba(0,0,0,.5); position: relative; z-index: 5; }
+		
+		code { background: rgba(0,0,0,.5); padding: 2px 3px; color: #fff; text-shadow: 0 1px 1px rgba(0,0,0,.75); -webkit-border-radius: 3px; -moz-border-radius: 3px; }
+		
+		ol.code { background: rgba(0,0,0,.75); margin-bottom: 18px; border: solid rgba(0,0,0,.75); border-width: 1px 1px 0; -webkit-border-radius: 3px; -moz-border-radius: 3px; -webkit-box-shadow: 0 1px 1px rgba(255,255,255,.5); }
+		ol.code li, ol.code li code { font-size: 14px !important; }
+		ol.code code { background: none; }
+    </style>
+
+		
+			<link rel="icon" href="/playground/favicon.ico" type="image/x-icon">
+		<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-2195009-2']);
+  _gaq.push(['_trackPageview']);
+	_gaq.push(['b._setAccount', 'UA-2195009-29']);
+	_gaq.push(['b._trackPageview']);
+
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+	<link href="http://www.zurb.com:80/assets/ads.css" type="text/css" rel="stylesheet"><style type="text/css" charset="utf-8">/* See license.txt for terms of usage */
+/** reset styling **/
+.fbProxyElement {
+    position: fixed !important;
+    pointer-events: auto !important;
+}</style></head>
+	
+
+<div style ="border-radius:5px;margin:10px;padding:20px;background:#fff;border:2px solid #fff;width:auto;height:400px">Listings
+ 	<ul class="polaroids">
+		<li>
+            <% @my_listings.each do |m| %>
+	      <%= link_to image_tag(m.photo.url(:small),:size =>"100x100"),m %>
+            <% end %>
+
 </div>
+	<br class="clear">
+
+	<br>
+<div style ="border-radius:5px;margin:10px;padding:20px;background:#fff;border:2px solid #fff;width:auto;height:400px">Events
+	<ul class="polaroids">
+<br><br><br>
+       <li>
+         <% @event.each do |e| %>
+	  <%= link_to image_tag(e.photo.url(:small)),e %>
+         <% end %>
+      </li>
+   </ul>
+ </div>
 
 
-<h2>Friends</h2>
-<ul>
-  <% for friendship in current_user.friendships %>
-    <li>
-      <%= h friendship.friend.profile.full_name %>
-      (<%= link_to "remove", friendship.user.profile.full_name, :method => :delete %>)
-    </li>
-  <% end %>
-</ul>
 
+	
+	
+  
+</div>
+			</div>
+		</div>
+		<script>
+		function initLayout(){
+		  // To make the Subscribe to ZURBnews form nicer to use.
+		  var newsFormInput = document.getElementById('groupie_email'),
+		  defaultNewsFormValue = newsFormInput.value;
+		  newsFormInput.onfocus = function(){
+		      if (newsFormInput.value == defaultNewsFormValue){
+		          newsFormInput.value = '';            
+		      }
+		  }
+		  newsFormInput.onblur = function(){
+		      if (newsFormInput.value == ''){
+		          newsFormInput.value = defaultNewsFormValue;            
+		      }
+		  }
+		}
+		initLayout();
+		</script>
+		<script type="text/javascript">
+			// This function will be located in: global.js
+			if (typeof initZURB == 'function') initZURB();
+			
+			// This function will be located in: /public/javascripts/layouts/playground.js
+			if (typeof initLayout == 'function') initLayout();
+		
+			// This function will be located in: /public/javascripts/controllers/playground.js
+			if (typeof css3PolaroidsPage == 'function'){
+				css3PolaroidsPage();
+			}
+		</script>
+		<script type="text/javascript" src="http://www.zurb.com/assets/foundation.top-bar.js"></script>
+    <script type="text/javascript" src="http://www.zurb.com/assets/zurb.mega-drop.js"></script>
+	
+</body></html>
 
-<h2>Mutual Friends</h2>
-<ul>
-  <% for user in current_user.inverse_friends %>
-    <li><%=h user.profile.full_name %></li>
-  <% end %>
-</ul>
 
 
